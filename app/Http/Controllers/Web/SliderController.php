@@ -44,6 +44,24 @@ class SliderController extends Controller
         return redirect()->route('admin.sliders.index')->with('success', 'Slider created!');
     }
 
+    public function edit($id)
+    {
+        $slider = $this->slidersService->find($id);
+        $breadcrumbs = [
+            ['name' => __('messages.sliders'), 'url' => route('admin.sliders.index')],
+            ['name' => __('messages.update'), 'url' => null]
+        ];
+        return view('admin.sliders.edit', compact('slider', 'breadcrumbs'));
+    }
+
+    public function update(SliderRequest $request, Slider $slider)
+    {
+        $this->slidersService->updateSlider($slider, $request->validated() + [
+            'image' => $request->file('image'),
+        ]);
+        return redirect()->route('admin.sliders.index')->with('success', 'Slider updated!');
+    }
+
     public function destroy($id)
     {
         $sliders =  $this->slidersService->find($id);

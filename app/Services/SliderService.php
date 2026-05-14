@@ -36,6 +36,20 @@ class SliderService
         return $this->sliderRepo->create($data);
     }
 
+    public function updateSlider(Slider $slider, array $data)
+    {
+        if (isset($data['image']) && $data['image']->isValid()) {
+            if ($slider->path && Storage::disk('public')->exists($slider->path)) {
+                Storage::disk('public')->delete($slider->path);
+            }
+            $data['path'] = $data['image']->store('slider/images', 'public');
+        } else {
+            unset($data['image']);
+        }
+
+        return $this->sliderRepo->update($slider, $data);
+    }
+
     public function deleteSlider(Slider $event)
     {
         return $this->sliderRepo->delete($event);

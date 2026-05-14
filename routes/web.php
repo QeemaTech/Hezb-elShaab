@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Web\CandidateController;
 use App\Http\Controllers\Web\EventController;
+use App\Http\Controllers\Web\AboutUsController;
 use App\Http\Controllers\Web\NewsController;
 use App\Http\Controllers\Web\PermissionController;
 use App\Http\Controllers\Web\RoleController;
@@ -30,6 +31,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
         Route::get('/app-settings', [HomeController::class,'appSettings'])->name('appSettings.index');
         Route::post('/app-settings', [HomeController::class,'updateAppSettings'])->name('appSettings.update');
+        Route::get('/about-us', [AboutUsController::class, 'index'])->name('aboutUs.index');
+        Route::put('/about-us', [AboutUsController::class, 'update'])->name('aboutUs.update');
     });
 
     Route::middleware('permission:Users|Users List')->group(function () {
@@ -48,7 +51,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::middleware('permission:News')->group(function () {
         Route::resource('news', NewsController::class);
     });
-    Route::resource('sliders', SliderController::class)->except(['show','edit','update']);
+    Route::resource('sliders', SliderController::class)->except(['show']);
 
     // Route::middleware('role:super admin|permission:Events')->group(function () {
     // Route::middleware(['role_or_permission:super admin|Events'])->group(function () {
@@ -59,4 +62,3 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     // });
 });
 Route::get('/ajax-list', [HomeController::class, 'getAjaxList'])->name('ajax-list');
-

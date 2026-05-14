@@ -27,6 +27,15 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/css/select2.min.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="{{ asset('dashboard/css/argon-dashboard.css?v=2.1.0') }}" rel="stylesheet" />
+    <style>
+        /* Use full sidebar space and only scroll when content exceeds available height */
+        #sidenav-main.navbar-vertical .navbar-collapse {
+            height: auto;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+    </style>
 </head>
 
 <body class="g-sidenav-show rtl  bg-gray-100">
