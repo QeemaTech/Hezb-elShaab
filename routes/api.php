@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AppSettingController;
 use App\Http\Controllers\Api\AboutUsController;
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\CandidateController;
+use App\Http\Controllers\Api\ComplaintController;
 use App\Http\Controllers\Api\EventController;
 use App\Http\Controllers\Api\NewsController;
 use App\Http\Controllers\Api\SliderController;
@@ -19,6 +20,10 @@ Route::group(['middleware' => ['guest']], function () {
     Route::post('login', [AuthController::class, 'login'])->name('auth.login');
     Route::post('login-otp', [AuthController::class, 'loginOTP'])->name('auth.loginOTP');
 });
+
+Route::post('complaints', [ComplaintController::class, 'store'])
+    ->middleware('throttle:5,1')
+    ->name('complaints.store');
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/user', [AuthController::class, 'profile'])->name('profile');

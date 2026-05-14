@@ -151,4 +151,13 @@
     'answer' => 'الإجابة',
     'add_faq' => 'إضافة سؤال',
     'settings_updated' => 'تم تحديث الإعدادات بنجاح',
+    'complaints' => 'الشكاوى',
+    'complaint' => 'شكوى',
+    'complaint_submitted_successfully' => 'تم إرسال الشكوى بنجاح',
+    'source' => 'المصدر',
+    'change_status' => 'تغيير الحالة',
+    'new' => 'جديدة',
+    'in_progress' => 'قيد المعالجة',
+    'resolved' => 'تم الحل',
+    'closed' => 'مغلقة',
 );

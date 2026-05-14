@@ -3,6 +3,7 @@
 use App\Http\Controllers\Web\CandidateController;
 use App\Http\Controllers\Web\EventController;
 use App\Http\Controllers\Web\AboutUsController;
+use App\Http\Controllers\Web\ComplaintController;
 use App\Http\Controllers\Web\NewsController;
 use App\Http\Controllers\Web\PermissionController;
 use App\Http\Controllers\Web\RoleController;
@@ -50,6 +51,11 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
     Route::middleware('permission:News')->group(function () {
         Route::resource('news', NewsController::class);
+    });
+    Route::middleware('role:super admin')->group(function () {
+        Route::get('complaints', [ComplaintController::class, 'index'])->name('complaints.index');
+        Route::get('complaints/{id}', [ComplaintController::class, 'show'])->name('complaints.show');
+        Route::patch('complaints/{id}/status', [ComplaintController::class, 'updateStatus'])->name('complaints.update-status');
     });
     Route::resource('sliders', SliderController::class)->except(['show']);
 

@@ -14,5 +14,13 @@
     'app_settings' => 'App Settings',
     'edit' => 'Edit',
     'cancel' => 'Cancel',
+    'complaints' => 'Complaints',
+    'complaint' => 'Complaint',
+    'complaint_submitted_successfully' => 'Complaint submitted successfully',
+    'source' => 'Source',
+    'change_status' => 'Change Status',
+    'new' => 'New',
+    'in_progress' => 'In Progress',
+    'resolved' => 'Resolved',
+    'closed' => 'Closed',
 );
-
