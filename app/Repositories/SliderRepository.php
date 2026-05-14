@@ -8,12 +8,18 @@ class SliderRepository
 {
     public function getAll()
     {
-        return Slider::latest()->get();
+        return Slider::orderBy('sort_order')->orderByDesc('id')->get();
     }
 
     public function create(array $data)
     {
         return Slider::create($data);
+    }
+
+    public function update(Slider $slider, array $data)
+    {
+        $slider->update($data);
+        return $slider;
     }
 
     public function delete(Slider $event)
@@ -23,7 +29,7 @@ class SliderRepository
 
     public function index($limit)
     {
-        return Slider::paginate($limit);
+        return Slider::orderBy('sort_order')->orderByDesc('id')->paginate($limit);
     }
 
 

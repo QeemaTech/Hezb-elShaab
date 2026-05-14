@@ -142,5 +142,13 @@
     'slider' => 'صورة شريحة',
     'create_sliders' => 'إضافة صور الشرائح',
     'please_verifiy_phone_to_login' => 'برجاء توثيق رقم الهاتف للإتمام تسجيل الدخول',
+    'about_us' => 'من نحن',
+    'vision_text' => 'رؤية فكرية',
+    'contact_email' => 'بريد التواصل',
+    'membership_form_url' => 'رابط نموذج العضوية',
+    'faqs' => 'الأسئلة الشائعة',
+    'question' => 'السؤال',
+    'answer' => 'الإجابة',
+    'add_faq' => 'إضافة سؤال',
+    'settings_updated' => 'تم تحديث الإعدادات بنجاح',
 );
-

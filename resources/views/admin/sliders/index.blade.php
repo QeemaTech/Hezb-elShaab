@@ -22,6 +22,9 @@
                                             #
                                         </th>
                                         <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+                                            Sort Order
+                                        </th>
+                                        <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
                                             {{__('messages.Image')}}
                                         </th>
                                         <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
@@ -33,10 +36,16 @@
                                     @foreach ($sliders as $index => $slider)
                                         <tr data-id="{{$slider->id}}">
                                             <td><span class="text-secondary text-xs font-weight-bold">{{$index+1}}</span></td>
+                                            <td class="text-center">
+                                                <span class="text-secondary text-xs font-weight-bold">{{ $slider->sort_order }}</span>
+                                            </td>
                                             <td class="text-center ">
                                                 <img src="{{asset($slider->path_url)}}" class="avatar avatar-lg me-3" alt="user1">
                                             </td>
                                             <td class="text-center align-middle">
+                                                <a href="{{route('admin.sliders.edit',$slider->id)}}" class="mx-2 text-primary font-weight-bold" title="Edit">
+                                                    <i class="fa fa-pen"></i>
+                                                </a>
                                                 <a href="javascript:;" class="btn-delete text-danger mx-2" data-url="{{ route('admin.sliders.destroy', $slider->id) }}" title="Delete">
                                                     <i class="fa fa-trash"></i>
                                                 </a>

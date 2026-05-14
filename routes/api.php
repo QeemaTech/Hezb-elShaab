@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AppSettingController;
+use App\Http\Controllers\Api\AboutUsController;
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\CandidateController;
 use App\Http\Controllers\Api\EventController;
@@ -35,5 +36,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('sliders',[SliderController::class,'index'])->name('sliders.index');
 
     Route::get('app-settings',[AppSettingController::class,'index'])->name('app-settings.index');
+    Route::get('about-us/vision',[AboutUsController::class,'vision'])->name('about-us.vision');
+    Route::get('about-us/faqs',[AboutUsController::class,'faqs'])->name('about-us.faqs');
+    Route::get('about-us/contact-mail',[AboutUsController::class,'contactMail'])->name('about-us.contact-mail');
+    Route::get('about-us/membership-form-url',[AboutUsController::class,'membershipFormUrl'])->name('about-us.membership-form-url');
 });
-
