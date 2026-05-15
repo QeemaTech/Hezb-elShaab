@@ -7,6 +7,7 @@ use App\Http\Controllers\Web\GovernorateController;
 use App\Http\Controllers\Web\LocalUnitController;
 use App\Http\Controllers\Web\AboutUsController;
 use App\Http\Controllers\Web\PartyUnitController;
+use App\Http\Controllers\Web\ParliamentaryBodyController;
 use App\Http\Controllers\Web\BranchController;
 use App\Http\Controllers\Web\ComplaintController;
 use App\Http\Controllers\Web\NewsController;
@@ -57,6 +58,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
     Route::middleware('permission:Candidates')->group(function () {
         Route::resource('candidates', CandidateController::class);
+        Route::resource('parliamentary-bodies', ParliamentaryBodyController::class);
     });
 
     Route::middleware('permission:News')->group(function () {

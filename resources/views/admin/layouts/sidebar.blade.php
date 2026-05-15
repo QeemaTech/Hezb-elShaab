@@ -50,6 +50,15 @@
                     <span class="nav-link-text me-1">{{__('messages.candidates')}}</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link " href="{{route('admin.parliamentary-bodies.index')}}">
+                    <div
+                        class="icon icon-shape icon-sm border-radius-md text-center ms-2 d-flex align-items-center justify-content-center">
+                        <i class="ni ni-briefcase-24 text-info text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text me-1">{{__('messages.parliamentary_bodies')}}</span>
+                </a>
+            </li>
             @canany(['Users','Users List'])
                 <li class="nav-item">
                     <a class="nav-link " href="{{route('admin.users.index',['type' => 'admins'])}}">
