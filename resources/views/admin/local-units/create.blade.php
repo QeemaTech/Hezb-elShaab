@@ -1,0 +1,19 @@
+@extends('admin.layouts.app')
+@section('content')
+<div class="container-fluid py-4"><div class="card"><div class="card-header pb-0"><h6>{{ __('messages.create') }} {{ __('messages.local_unit') }}</h6></div><div class="card-body"><form method="POST" action="{{ route('admin.local-units.store') }}">@csrf @include('admin.local-units.partials.form',['localUnit'=>null])<button class="btn btn-primary btn-sm">{{ __('messages.create') }}</button></form></div></div></div>
+@endsection
+@push('scripts')
+<script>
+(function(){
+ const governorate=document.getElementById('governorate_id');
+ const district=document.getElementById('district_id');
+ governorate?.addEventListener('change', async function(){
+   district.innerHTML = `<option value="">{{ __('messages.select_district') }}</option>`;
+   if(!this.value) return;
+   const res=await fetch(`{{ route('admin.ajax.districts') }}?governorate_id=${this.value}`);
+   const data=await res.json();
+   (data.results||[]).forEach(item=>district.insertAdjacentHTML('beforeend',`<option value="${item.id}">${item.name}</option>`));
+ });
+})();
+</script>
+@endpush

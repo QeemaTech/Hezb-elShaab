@@ -99,15 +99,7 @@
                         <span class="nav-link-text me-1">{{__('messages.roles')}}</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="{{route('admin.appSettings.index')}}">
-                        <div
-                            class="icon icon-shape icon-sm border-radius-md text-center ms-2 d-flex align-items-center justify-content-center">
-                            <i class="ni ni-settings text-success text-sm opacity-10"></i>
-                        </div>
-                        <span class="nav-link-text me-1">{{__('messages.app_settings')}}</span>
-                    </a>
-                </li>
+                
                 <li class="nav-item">
                     <a class="nav-link " href="{{route('admin.sliders.index')}}">
                         <div
@@ -127,6 +119,48 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link " href="{{route('admin.governorates.index')}}">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center ms-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-map-big text-info text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text me-1">{{__('messages.governorates')}}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="{{route('admin.districts.index')}}">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center ms-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-building text-primary text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text me-1">{{__('messages.districts')}}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="{{route('admin.local-units.index')}}">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center ms-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-single-copy-04 text-warning text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text me-1">{{__('messages.local_units')}}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="{{route('admin.party-units.index')}}">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center ms-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-world text-warning text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text me-1">{{__('messages.party_units')}}</span>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link " href="{{route('admin.complaints.index')}}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center ms-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-support-16 text-danger text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text me-1">{{__('messages.complaints')}}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link " href="{{route('admin.aboutUs.index')}}">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center ms-2 d-flex align-items-center justify-content-center">
@@ -136,12 +170,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="{{route('admin.complaints.index')}}">
+                    <a class="nav-link " href="{{route('admin.appSettings.index')}}">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center ms-2 d-flex align-items-center justify-content-center">
-                            <i class="ni ni-support-16 text-danger text-sm opacity-10"></i>
+                            <i class="ni ni-settings text-success text-sm opacity-10"></i>
                         </div>
-                        <span class="nav-link-text me-1">{{__('messages.complaints')}}</span>
+                        <span class="nav-link-text me-1">{{__('messages.app_settings')}}</span>
                     </a>
                 </li>
             @endhasrole
