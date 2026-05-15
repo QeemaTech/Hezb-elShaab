@@ -21,11 +21,12 @@ class UserController extends Controller
 
     public function index()
     {
+        $type = request()->input('type', 'active-members');
         $users = $this->userService->getAllUsers();
         $breadcrumbs = [
             ['name' => __('messages.users'), 'url' => route('admin.users.index')],
         ];
-        return view('admin.users.index', compact('users', 'breadcrumbs'));
+        return view('admin.users.index', compact('users', 'breadcrumbs', 'type'));
     }
 
     public function show($uuid)

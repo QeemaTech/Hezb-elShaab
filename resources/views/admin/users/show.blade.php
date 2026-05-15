@@ -34,7 +34,13 @@
                             <h5 class="fw-bold">{{ __('messages.phone') }}</h5>
                             <p class="text-muted">{{ $user->phone ?? __('messages.not_provided') }}</p>
                         </div>
-
+                        {{-- National ID --}}
+                        @if($user->national_id)
+                            <div class="col-md-6 mb-3">
+                                <h5 class="fw-bold">{{ __('messages.national_id') }}</h5>
+                                <p class="text-muted">{{ $user->national_id ?? __('messages.national_id') }}</p>
+                            </div>
+                        @endif
                         @if ($user->member)
 
                             {{-- National ID --}}

@@ -6,9 +6,14 @@ use App\Models\User;
 
 class UserRepository
 {
-    public function getAdmins()
+    public function getAdmins(?string $nationalId = null)
     {
-        return User::where('role', 'admin')->latest()->get();
+        return User::where('role', 'admin')
+            ->when($nationalId, function ($query) use ($nationalId) {
+                $query->where('national_id', 'like', '%' . $nationalId . '%');
+            })
+            ->latest()
+            ->get();
     }
     public function getPendingMembers()
     {
@@ -20,9 +25,24 @@ class UserRepository
         return User::hasMemberStatus('rejected')->latest()->get();
     }
 
-    public function getActiveMembers()
+    public function getActiveMembers(?string $nationalId = null, ?string $membershipId = null)
     {
-        return User::hasMemberStatus('active')->latest()->get();
+        return User::hasMemberStatus('active')
+            ->when($nationalId, function ($query) use ($nationalId) {
+                $query->where(function ($innerQuery) use ($nationalId) {
+                    $innerQuery->where('national_id', 'like', '%' . $nationalId . '%')
+                        ->orWhereHas('member', function ($memberQuery) use ($nationalId) {
+                            $memberQuery->where('national_id', 'like', '%' . $nationalId . '%');
+                        });
+                });
+            })
+            ->when($membershipId, function ($query) use ($membershipId) {
+                $query->whereHas('member', function ($memberQuery) use ($membershipId) {
+                    $memberQuery->where('membership_number', 'like', '%' . $membershipId . '%');
+                });
+            })
+            ->latest()
+            ->get();
     }
 
     public function getAll()

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Web\CandidateController;
 use App\Http\Controllers\Web\EventController;
 use App\Http\Controllers\Web\AboutUsController;
+use App\Http\Controllers\Web\BranchController;
 use App\Http\Controllers\Web\ComplaintController;
 use App\Http\Controllers\Web\NewsController;
 use App\Http\Controllers\Web\PermissionController;
@@ -29,6 +30,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::middleware('role:super admin')->group(function () {
         Route::resource('roles',RoleController::class);
         Route::resource('permissions',PermissionController::class)->only('index');
+        Route::resource('branches', BranchController::class)->except(['show']);
 
         Route::get('/app-settings', [HomeController::class,'appSettings'])->name('appSettings.index');
         Route::post('/app-settings', [HomeController::class,'updateAppSettings'])->name('appSettings.update');
