@@ -1,4 +1,4 @@
-<?php return array(
+﻿<?php return array(
     'hezb_el_shaab' => 'حزب الشعب الجمهوري',
     'wellcome' => 'مرحباً بك',
     'Enter_your_email_and_password_to_sign_in' => 'ادخل البريد الالكتروني وكلمة المرور لتسجيل الدخول',
@@ -160,4 +160,20 @@
     'in_progress' => 'قيد المعالجة',
     'resolved' => 'تم الحل',
     'closed' => 'مغلقة',
+    'branches' => 'الفروع',
+    'branch' => 'فرع',
+    'branch_information' => 'معلومات الفرع',
+    'create_branch' => 'إضافة فرع',
+    'update_branch' => 'تعديل الفرع',
+    'branch_created' => 'تم إنشاء الفرع بنجاح',
+    'branch_updated' => 'تم تحديث الفرع بنجاح',
+    'branch_deleted' => 'تم حذف الفرع بنجاح',
+    'search_address_placeholder' => 'ابحث عن عنوان ثم اختره من النتائج',
+    'address_help' => 'يمكنك البحث عن عنوان أو اختيار نقطة من الخريطة، وسيتم تحديث العنوان والإحداثيات تلقائيا.',
+    'no_data' => 'لا توجد بيانات',
+    'search' => 'بحث',
+    'search_national_id_help' => 'استخدم هذا الحقل للبحث بالرقم القومي.',
+    'search_membership_id_help' => 'استخدم هذا الحقل للبحث في الأعضاء النشطين برقم العضوية.',
+    'membership_search_admin_note' => 'البحث برقم العضوية متاح فقط في قائمة الأعضاء النشطين.',
+    'search_name_or_national_id_help' => 'يمكنك البحث بالاسم أو الرقم القومي.',
 );

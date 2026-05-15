@@ -153,6 +153,7 @@
                                         data-ajax--url="{{ route('ajax-list', ['type' => 'users']) }}"
                                         data-ajax--cache="true" multiple>
                                     </select>
+                                    <small class="text-muted">{{ __('messages.search_name_or_national_id_help') }}</small>
                                 </div>
                             </div>
 
@@ -171,6 +172,7 @@
                                         data-ajax--url="{{ route('ajax-list', ['type' => 'admins']) }}"
                                         data-ajax--cache = "true" multiple>
                                     </select>
+                                    <small class="text-muted">{{ __('messages.search_name_or_national_id_help') }}</small>
                                 </div>
                             </div>
 

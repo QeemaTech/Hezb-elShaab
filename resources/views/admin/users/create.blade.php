@@ -36,6 +36,15 @@
                                 </div>
                             </div>
 
+                            {{-- National ID --}}
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">{{ __('messages.national_id') }}</label>
+                                    <input class="form-control" type="text" name="national_id" value="{{ old('national_id') }}">
+                                    @error('national_id') <span class="text-danger">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+
                             {{-- Phone --}}
                             <div class="col-md-6">
                                 <div class="form-group">

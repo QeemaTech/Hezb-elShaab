@@ -14,6 +14,33 @@
                             </a>
                             @endcan
                         </div>
+                        <form method="GET" action="{{ route('admin.users.index') }}" class="mt-3">
+                            <input type="hidden" name="type" value="{{ $type ?? request('type', 'active-members') }}">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-control-label">{{ __('messages.national_id') }}</label>
+                                    <input type="text" name="national_id" class="form-control" value="{{ request('national_id') }}" placeholder="{{ __('messages.national_id') }}">
+                                    <small class="text-muted">{{ __('messages.search_national_id_help') }}</small>
+                                </div>
+                                
+                                <div class="col-md-4 " {{ ($type ?? request('type', 'active-members')) === 'admins' ? 'hidden' : '' }}>
+                                    <label class="form-control-label">{{ __('messages.membership_number') }}</label>
+                                    <input type="text" name="membership_id" class="form-control" value="{{ request('membership_id') }}" placeholder="{{ __('messages.membership_number') }}" {{ ($type ?? request('type', 'active-members')) === 'admins' ? 'disabled' : '' }}>
+                                    <small class="text-muted">
+                                        @if (($type ?? request('type', 'active-members')) === 'admins')
+                                            {{ __('messages.membership_search_admin_note') }}
+                                        @else
+                                            {{ __('messages.search_membership_id_help') }}
+                                        @endif
+                                    </small>
+                                </div>
+                                
+                                <div class="col-md-4 d-flex align-items-end gap-2">
+                                    <button type="submit" class="btn btn-primary btn-sm mb-0">{{ __('messages.search') }}</button>
+                                    <a href="{{ route('admin.users.index', ['type' => ($type ?? request('type', 'active-members'))]) }}" class="btn btn-outline-secondary btn-sm mb-0">{{ __('messages.cancel') }}</a>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
@@ -68,7 +95,7 @@
                                                     @if(count($user->roles) > 0)
                                                     {{$user->roles[0]->name}}
                                                     @else
-                                                    --
+                                                    {{ __('messages.' . $user->role) }}
                                                     @endif
                                                 <span>
                                             </td>

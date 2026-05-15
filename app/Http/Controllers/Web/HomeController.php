@@ -27,10 +27,15 @@ class HomeController extends Controller
         switch ($request->type) {
 
             case 'admins':
-                $items = User::where('role', 'admin')->select('id', 'name as text')->where('status', 1);
+                $items = User::where('role', 'admin')
+                    ->where('status', 1)
+                    ->selectRaw("id, CONCAT(name, CASE WHEN national_id IS NOT NULL AND national_id != '' THEN CONCAT(' - ', national_id) ELSE '' END) as text");
 
                 if ($value != '') {
-                    $items->where('name', 'LIKE', '%' . $value . '%');
+                    $items->where(function ($query) use ($value) {
+                        $query->where('name', 'LIKE', '%' . $value . '%')
+                            ->orWhere('national_id', 'LIKE', '%' . $value . '%');
+                    });
                 }
 
                 $items = $items->get();
@@ -38,10 +43,18 @@ class HomeController extends Controller
                 break;
 
             case 'users':
-                $items = User::where('role', 'user')->select('id', 'name as text')->where('status', 1);
+                $items = User::where('role', 'user')
+                    ->where('status', 1)
+                    ->selectRaw("id, CONCAT(name, CASE WHEN national_id IS NOT NULL AND national_id != '' THEN CONCAT(' - ', national_id) ELSE '' END) as text");
 
                 if ($value != '') {
-                    $items->where('name', 'LIKE', $value . '%');
+                    $items->where(function ($query) use ($value) {
+                        $query->where('name', 'LIKE', '%' . $value . '%')
+                            ->orWhere('national_id', 'LIKE', '%' . $value . '%')
+                            ->orWhereHas('member', function ($memberQuery) use ($value) {
+                                $memberQuery->where('national_id', 'LIKE', '%' . $value . '%');
+                            });
+                    });
                 }
 
                 $items = $items->get();

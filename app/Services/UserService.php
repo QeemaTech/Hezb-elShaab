@@ -18,12 +18,15 @@ class UserService
     public function getAllUsers()
     {
         $type =  request()->input('type','active-members');
+        $nationalId = request()->input('national_id');
+        $membershipId = request()->input('membership_id');
+
         if($type == 'admins'){
-            return $this->userRepo->getAdmins();
+            return $this->userRepo->getAdmins($nationalId);
         }elseif($type == 'pending-members'){
             return $this->userRepo->getPendingMembers();
         }else{
-            return $this->userRepo->getActiveMembers();
+            return $this->userRepo->getActiveMembers($nationalId, $membershipId);
         }
         // return $this->userRepo->getAll($type);
     }

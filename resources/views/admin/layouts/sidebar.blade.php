@@ -118,6 +118,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link " href="{{route('admin.branches.index')}}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center ms-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-square-pin text-warning text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text me-1">{{__('messages.branches')}}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link " href="{{route('admin.aboutUs.index')}}">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center ms-2 d-flex align-items-center justify-content-center">

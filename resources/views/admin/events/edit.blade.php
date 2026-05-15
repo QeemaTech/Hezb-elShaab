@@ -205,6 +205,7 @@
                                                 @endforeach
                                             @endif
                                         </select>
+                                        <small class="text-muted">{{ __('messages.search_name_or_national_id_help') }}</small>
                                     </div>
                                 </div>
 
