@@ -1,8 +1,12 @@
 <?php
 
 use App\Http\Controllers\Web\CandidateController;
+use App\Http\Controllers\Web\DistrictController;
 use App\Http\Controllers\Web\EventController;
+use App\Http\Controllers\Web\GovernorateController;
+use App\Http\Controllers\Web\LocalUnitController;
 use App\Http\Controllers\Web\AboutUsController;
+use App\Http\Controllers\Web\PartyUnitController;
 use App\Http\Controllers\Web\BranchController;
 use App\Http\Controllers\Web\ComplaintController;
 use App\Http\Controllers\Web\NewsController;
@@ -31,6 +35,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
         Route::resource('roles',RoleController::class);
         Route::resource('permissions',PermissionController::class)->only('index');
         Route::resource('branches', BranchController::class)->except(['show']);
+        Route::resource('governorates', GovernorateController::class);
+        Route::resource('districts', DistrictController::class);
+        Route::resource('local-units', LocalUnitController::class);
+        Route::resource('party-units', PartyUnitController::class);
 
         Route::get('/app-settings', [HomeController::class,'appSettings'])->name('appSettings.index');
         Route::post('/app-settings', [HomeController::class,'updateAppSettings'])->name('appSettings.update');
@@ -67,6 +75,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
         Route::resource('events', EventController::class);
         Route::delete('events/{event}/users/{user}', [EventController::class, 'removeUser'])->name('events.remove-user');
         Route::post('events/{event}/users', [EventController::class, 'addUser'])->name('events.add-users');
+        Route::get('ajax/districts', [HomeController::class, 'getDistrictsByGovernorate'])->name('ajax.districts');
+        Route::get('ajax/local-units', [HomeController::class, 'getLocalUnitsByDistrict'])->name('ajax.local-units');
     // });
 });
 Route::get('/ajax-list', [HomeController::class, 'getAjaxList'])->name('ajax-list');

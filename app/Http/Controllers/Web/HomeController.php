@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Models\AppSetting;
 use App\Models\Event;
+use App\Models\District;
+use App\Models\LocalUnit;
 use App\Models\News;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -80,6 +82,28 @@ class HomeController extends Controller
             'show_elections',
             'breadcrumbs'
         ));
+    }
+
+    public function getDistrictsByGovernorate(Request $request)
+    {
+        $districts = District::where('governorate_id', $request->governorate_id)
+            ->where('status', 1)
+            ->orderBy('sort_order')
+            ->orderBy('name')
+            ->get(['id', 'name']);
+
+        return response()->json(['results' => $districts]);
+    }
+
+    public function getLocalUnitsByDistrict(Request $request)
+    {
+        $localUnits = LocalUnit::where('district_id', $request->district_id)
+            ->where('status', 1)
+            ->orderBy('sort_order')
+            ->orderBy('name')
+            ->get(['id', 'name']);
+
+        return response()->json(['results' => $localUnits]);
     }
 
     public function updateAppSettings(Request $request)
