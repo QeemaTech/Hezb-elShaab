@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\CandidateController;
 use App\Http\Controllers\Api\ComplaintController;
 use App\Http\Controllers\Api\EventController;
+use App\Http\Controllers\Api\LocationController;
 use App\Http\Controllers\Api\NewsController;
 use App\Http\Controllers\Api\SliderController;
 use Illuminate\Http\Request;
@@ -15,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group(['middleware' => ['guest']], function () {
+    Route::get('/governorates', [LocationController::class, 'governorates'])->name('locations.governorates');
+    Route::get('/districts', [LocationController::class, 'districts'])->name('locations.districts');
+    Route::get('/local-units', [LocationController::class, 'localUnits'])->name('locations.local-units');
+    Route::get('/party-units', [LocationController::class, 'partyUnits'])->name('locations.party-units');
+
     Route::post('register', [AuthController::class, 'register'])->name('auth.register');
     Route::post('verify-phone', [AuthController::class, 'verifyPhone'])->name('auth.verifyPhone');
     Route::post('login', [AuthController::class, 'login'])->name('auth.login');
@@ -27,6 +33,7 @@ Route::post('complaints', [ComplaintController::class, 'store'])
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/user', [AuthController::class, 'profile'])->name('profile');
+    Route::post('/update-profile', [AuthController::class, 'updateProfile'])->name('profile.update');
     Route::post('logout', [AuthController::class, 'logout'])->name('auth.logout');
 
     Route::get('events',[EventController::class,'index'])->name('events.index');

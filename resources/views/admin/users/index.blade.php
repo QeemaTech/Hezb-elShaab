@@ -69,6 +69,9 @@
                                             {{__('messages.Status')}}
                                         </th>
                                         <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+                                            {{ __('messages.member_status') }}
+                                        </th>
+                                        <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
                                             {{__('messages.Actions')}}
                                         </th>
                                     </tr>
@@ -108,6 +111,19 @@
 
                                                 @endif
                                             </td>
+                                            <td class="align-middle text-center text-sm">
+                                                @if ($user->member_id)
+                                                    @if (($user->member_status ?? 'pending') === 'active')
+                                                        <span class="badge badge-sm bg-gradient-success">{{ __('messages.active') }}</span>
+                                                    @elseif (($user->member_status ?? 'pending') === 'rejected')
+                                                        <span class="badge badge-sm bg-gradient-danger">{{ __('messages.rejected') }}</span>
+                                                    @else
+                                                        <span class="badge badge-sm bg-gradient-warning">{{ __('messages.pending') }}</span>
+                                                    @endif
+                                                @else
+                                                    <span class="text-secondary text-xs">{{ __('messages.not_provided') }}</span>
+                                                @endif
+                                            </td>
                                             <td class="text-center align-middle">
                                                 <a href="{{route('admin.users.show',$user->uuid)}}" class="mx-2 text-info font-weight-bold" data-toggle="tooltip" data-original-title="Edit user">
                                                     <i class="fa fa-eye"></i>
@@ -122,6 +138,22 @@
                                                         <i class="fa fa-trash"></i>
                                                     </a>
                                                 @endcan
+                                                @if (($type ?? request('type', 'active-members')) === 'pending-members' && $user->member_id && ($user->member_status ?? 'pending') === 'pending')
+                                                    @can('Users Member Action')
+                                                        <a href="javascript:;" class="btn-member-action text-success mx-2"
+                                                           data-url="{{ url('/admin/users/' . $user->id . '/accept') }}"
+                                                           data-confirm="{{ __('messages.accept_request') }}"
+                                                           data-success="{{ __('messages.accept_request') }}">
+                                                            <i class="fa fa-check"></i>
+                                                        </a>
+                                                        <a href="javascript:;" class="btn-member-action text-danger mx-2"
+                                                           data-url="{{ url('/admin/users/' . $user->id . '/reject') }}"
+                                                           data-confirm="{{ __('messages.reject_request') }}"
+                                                           data-success="{{ __('messages.reject_request') }}">
+                                                            <i class="fa fa-times"></i>
+                                                        </a>
+                                                    @endcan
+                                                @endif
 
                                             </td>
                                         </tr>
@@ -136,3 +168,39 @@
 
     </div>
 @endsection
+
+@push('scripts')
+<script>
+    $(document).on('click', '.btn-member-action', function () {
+        const actionUrl = $(this).data('url');
+        const confirmTitle = $(this).data('confirm');
+        const successTitle = $(this).data('success');
+
+        Swal.fire({
+            title: confirmTitle,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: '{{ __("messages.confirm") }}',
+            cancelButtonText: '{{ __("messages.cancel") }}',
+        }).then((result) => {
+            if (!result.isConfirmed) return;
+
+            $.ajax({
+                url: actionUrl,
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function () {
+                    Swal.fire('{{ __("messages.success") }}', successTitle, 'success').then(() => {
+                        location.reload();
+                    });
+                },
+                error: function () {
+                    Swal.fire('{{ __("messages.error") }}', '{{ __("messages.something_went_wrong") }}', 'error');
+                }
+            });
+        });
+    });
+</script>
+@endpush
