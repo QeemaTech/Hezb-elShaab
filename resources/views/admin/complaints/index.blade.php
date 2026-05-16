@@ -6,7 +6,17 @@
         <div class="col-12">
             <div class="card mb-4">
                 <div class="card-header pb-0">
-                    <h6>{{ __('messages.complaints') }}</h6>
+                    <div class="d-flex justify-content-between">
+                        <h6>{{ __('messages.complaints') }}</h6>
+                        <div class="d-flex gap-2">
+                            <a href="{{ route('admin.exports.complaints', array_merge(request()->query(), ['format' => 'xlsx'])) }}" class="btn btn-sm btn-outline-success">
+                                Export Excel
+                            </a>
+                            <a href="{{ route('admin.exports.complaints', array_merge(request()->query(), ['format' => 'csv'])) }}" class="btn btn-sm btn-outline-secondary">
+                                Export CSV
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
@@ -47,4 +57,3 @@
     </div>
 </div>
 @endsection
-

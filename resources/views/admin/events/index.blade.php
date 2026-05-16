@@ -7,10 +7,21 @@
                     <div class="card-header pb-0">
                         <div class="d-flex justify-content-between">
                             <h6>{{__('messages.events')}}</h6>
-                            <a href="{{ route('admin.events.create') }}" class="float-end me-1 btn btn-sm btn-primary">
-                                <i class="fa fa-plus-circle fa-lg"></i>
-                                {{ trans('messages.add_form_title', ['form' => trans(key: 'messages.event')]) }}
-                            </a>
+                            <div class="d-flex gap-2">
+                                <a href="{{ route('admin.exports.events', array_merge(request()->query(), ['format' => 'xlsx'])) }}" class="btn btn-sm btn-outline-success">
+                                    Export Excel
+                                </a>
+                                <a href="{{ route('admin.exports.events', array_merge(request()->query(), ['format' => 'csv'])) }}" class="btn btn-sm btn-outline-secondary">
+                                    Export CSV
+                                </a>
+                                <!-- <a href="{{ route('admin.exports.event-users', array_merge(request()->query(), ['format' => 'xlsx'])) }}" class="btn btn-sm btn-outline-info">
+                                    Export Event Users
+                                </a> -->
+                                <a href="{{ route('admin.events.create') }}" class="float-end me-1 btn btn-sm btn-primary">
+                                    <i class="fa fa-plus-circle fa-lg"></i>
+                                    {{ trans('messages.add_form_title', ['form' => trans(key: 'messages.event')]) }}
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">

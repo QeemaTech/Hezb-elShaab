@@ -7,10 +7,18 @@
                     <div class="card-header pb-0">
                         <div class="d-flex justify-content-between">
                             <h6>{{__('messages.news')}}</h6>
-                            <a href="{{ route('admin.news.create') }}" class="float-end me-1 btn btn-sm btn-primary">
-                                <i class="fa fa-plus-circle fa-lg"></i>
-                                {{ trans('messages.add_form_title', ['form' => trans(key: 'messages.news')]) }}
-                            </a>
+                            <div class="d-flex gap-2">
+                                <a href="{{ route('admin.exports.news', array_merge(request()->query(), ['format' => 'xlsx'])) }}" class="btn btn-sm btn-outline-success">
+                                    Export Excel
+                                </a>
+                                <a href="{{ route('admin.exports.news', array_merge(request()->query(), ['format' => 'csv'])) }}" class="btn btn-sm btn-outline-secondary">
+                                    Export CSV
+                                </a>
+                                <a href="{{ route('admin.news.create') }}" class="float-end me-1 btn btn-sm btn-primary">
+                                    <i class="fa fa-plus-circle fa-lg"></i>
+                                    {{ trans('messages.add_form_title', ['form' => trans(key: 'messages.news')]) }}
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
