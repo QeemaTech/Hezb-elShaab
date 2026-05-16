@@ -9,12 +9,14 @@
                     <div class="d-flex justify-content-between">
                         <h6>{{ __('messages.complaints') }}</h6>
                         <div class="d-flex gap-2">
-                            <a href="{{ route('admin.exports.complaints', array_merge(request()->query(), ['format' => 'xlsx'])) }}" class="btn btn-sm btn-outline-success">
-                                Export Excel
-                            </a>
-                            <a href="{{ route('admin.exports.complaints', array_merge(request()->query(), ['format' => 'csv'])) }}" class="btn btn-sm btn-outline-secondary">
-                                Export CSV
-                            </a>
+                            @hasrole('super admin')
+                                <a href="{{ route('admin.exports.complaints', array_merge(request()->query(), ['format' => 'xlsx'])) }}" class="btn btn-sm btn-outline-success">
+                                    Export Excel
+                                </a>
+                                <a href="{{ route('admin.exports.complaints', array_merge(request()->query(), ['format' => 'csv'])) }}" class="btn btn-sm btn-outline-secondary">
+                                    Export CSV
+                                </a>
+                            @endhasrole
                         </div>
                     </div>
                 </div>

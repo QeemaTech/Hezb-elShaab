@@ -15,6 +15,7 @@ use App\Http\Controllers\Web\NewsController;
 use App\Http\Controllers\Web\PermissionController;
 use App\Http\Controllers\Web\RoleController;
 use App\Http\Controllers\Web\SliderController;
+use App\Http\Controllers\Web\SystemLogController;
 use App\Http\Controllers\Web\UserController;
 use App\Http\Controllers\Web\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -46,6 +47,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
         Route::post('/app-settings', [HomeController::class,'updateAppSettings'])->name('appSettings.update');
         Route::get('/about-us', [AboutUsController::class, 'index'])->name('aboutUs.index');
         Route::put('/about-us', [AboutUsController::class, 'update'])->name('aboutUs.update');
+        Route::get('system-logs', [SystemLogController::class, 'index'])->name('system-logs.index');
+        Route::get('system-logs/{systemLog}', [SystemLogController::class, 'show'])->name('system-logs.show');
+        Route::delete('system-logs/delete-all', [SystemLogController::class, 'destroyAll'])->name('system-logs.destroy-all');
+        Route::delete('system-logs/delete-range', [SystemLogController::class, 'destroyRange'])->name('system-logs.destroy-range');
     });
 
     Route::middleware('permission:Users|Users List')->group(function () {
