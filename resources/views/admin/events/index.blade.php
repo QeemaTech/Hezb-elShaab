@@ -8,12 +8,14 @@
                         <div class="d-flex justify-content-between">
                             <h6>{{__('messages.events')}}</h6>
                             <div class="d-flex gap-2">
-                                <a href="{{ route('admin.exports.events', array_merge(request()->query(), ['format' => 'xlsx'])) }}" class="btn btn-sm btn-outline-success">
-                                    Export Excel
-                                </a>
-                                <a href="{{ route('admin.exports.events', array_merge(request()->query(), ['format' => 'csv'])) }}" class="btn btn-sm btn-outline-secondary">
-                                    Export CSV
-                                </a>
+                                @hasrole('super admin')
+                                    <a href="{{ route('admin.exports.events', array_merge(request()->query(), ['format' => 'xlsx'])) }}" class="btn btn-sm btn-outline-success">
+                                        Export Excel
+                                    </a>
+                                    <a href="{{ route('admin.exports.events', array_merge(request()->query(), ['format' => 'csv'])) }}" class="btn btn-sm btn-outline-secondary">
+                                        Export CSV
+                                    </a>
+                                @endhasrole
                                 <!-- <a href="{{ route('admin.exports.event-users', array_merge(request()->query(), ['format' => 'xlsx'])) }}" class="btn btn-sm btn-outline-info">
                                     Export Event Users
                                 </a> -->

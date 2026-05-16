@@ -8,12 +8,14 @@
                         <div class="d-flex justify-content-between">
                             <h6>{{__('messages.news')}}</h6>
                             <div class="d-flex gap-2">
-                                <a href="{{ route('admin.exports.news', array_merge(request()->query(), ['format' => 'xlsx'])) }}" class="btn btn-sm btn-outline-success">
-                                    Export Excel
-                                </a>
-                                <a href="{{ route('admin.exports.news', array_merge(request()->query(), ['format' => 'csv'])) }}" class="btn btn-sm btn-outline-secondary">
-                                    Export CSV
-                                </a>
+                                @hasrole('super admin')
+                                    <a href="{{ route('admin.exports.news', array_merge(request()->query(), ['format' => 'xlsx'])) }}" class="btn btn-sm btn-outline-success">
+                                        Export Excel
+                                    </a>
+                                    <a href="{{ route('admin.exports.news', array_merge(request()->query(), ['format' => 'csv'])) }}" class="btn btn-sm btn-outline-secondary">
+                                        Export CSV
+                                    </a>
+                                @endhasrole
                                 <a href="{{ route('admin.news.create') }}" class="float-end me-1 btn btn-sm btn-primary">
                                     <i class="fa fa-plus-circle fa-lg"></i>
                                     {{ trans('messages.add_form_title', ['form' => trans(key: 'messages.news')]) }}
