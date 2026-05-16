@@ -8,6 +8,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 
 class AuthController extends Controller
@@ -19,25 +20,57 @@ class AuthController extends Controller
             'email' => 'required|string|max:225|unique:users,email',
             'phone' => 'required|unique:users,phone',
             'birth_date' => 'required|date',
+            'is_member' => 'required|boolean',
             'governorate_id' => 'required|integer|exists:governorates,id',
-            'national_id' => 'required|max:14|unique:members,national_id',
-            'member_id' => 'required|string|max:191|unique:members,membership_number',
+            'national_id' => 'required_if:is_member,1|prohibited_unless:is_member,1|nullable|max:14',
         ]);
+
         $code = 123456;
-        //random_int(100000, 999999);
-        $member = Member::create([
-            'national_id' => $request->national_id,
-            'membership_number' => $request->member_id,
-        ]);
+
+        $isMember = $request->boolean('is_member');
+        $member = null;
+
+        if ($isMember) {
+            $member = Member::where('national_id', $request->national_id)->first();
+
+            if (! $member) {
+                return response()->json([
+                    'message' => 'National ID is not valid.',
+                ], 422);
+            }
+
+            if (User::where('member_id', $member->id)->exists()) {
+                return response()->json([
+                    'message' => 'You already have account.',
+                ], 422);
+            }
+
+            // Reject registration when member record is flagged/inactive if such columns exist.
+            if (Schema::hasColumn('members', 'status')) {
+                $status = (string) data_get($member, 'status');
+                if (in_array($status, ['rejected', 'inactive', 'flagged'], true)) {
+                    return response()->json([
+                        'message' => 'This member record is flagged. Please contact support.',
+                    ], 422);
+                }
+            }
+
+            if (Schema::hasColumn('members', 'is_flagged') && (bool) data_get($member, 'is_flagged')) {
+                return response()->json([
+                    'message' => 'This member record is flagged. Please contact support.',
+                ], 422);
+            }
+        }
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
-            'national_id' => $request->national_id,
+            'national_id' => $isMember ? $request->national_id : null,
             'birth_date' => $request->birth_date,
             'governorate_id' => $request->governorate_id,
-            'member_id' => $member->id,
-            'member_status' => 'pending',
+            'member_id' => $member?->id,
+            'member_status' => $isMember ? 'active' : 'pending',
             'status' => 0,
             'code' => $code,
         ]);
