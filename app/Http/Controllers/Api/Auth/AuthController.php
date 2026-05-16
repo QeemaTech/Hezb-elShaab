@@ -8,6 +8,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class AuthController extends Controller
 {
@@ -18,6 +19,7 @@ class AuthController extends Controller
             'email' => 'required|string|max:225|unique:users,email',
             'phone' => 'required|unique:users,phone',
             'birth_date' => 'required|date',
+            'governorate_id' => 'required|integer|exists:governorates,id',
             'national_id' => 'required|max:14|unique:members,national_id',
             'member_id' => 'required|string|max:191|unique:members,membership_number',
         ]);
@@ -33,6 +35,7 @@ class AuthController extends Controller
             'phone' => $request->phone,
             'national_id' => $request->national_id,
             'birth_date' => $request->birth_date,
+            'governorate_id' => $request->governorate_id,
             'member_id' => $member->id,
             'member_status' => 'pending',
             'status' => 0,
@@ -156,5 +159,35 @@ class AuthController extends Controller
     public function profile(){
         $user = Auth::user();
         return response()->json($user);
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:225',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+        ]);
+
+        /** @var User $user */
+        $user = $request->user();
+
+        $data = [
+            'name' => $request->name,
+        ];
+
+        if ($request->hasFile('image')) {
+            if ($user->image && Storage::disk('public')->exists($user->image)) {
+                Storage::disk('public')->delete($user->image);
+            }
+
+            $data['image'] = $request->file('image')->store('users/images', 'public');
+        }
+
+        $user->update($data);
+
+        return response()->json([
+            'message' => 'Profile updated successfully.',
+            'data' => $user->fresh(),
+        ]);
     }
 }

@@ -1,0 +1,584 @@
+{
+  "info": {
+    "_postman_id": "4ff771bc-d35f-4909-9a69-cded7dcbce3f",
+    "name": "Hezb El Shaab",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "35577645",
+    "_collection_link": "https://go.postman.co/collection/35577645-4ff771bc-d35f-4909-9a69-cded7dcbce3f?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "Ahmed",
+                  "description": "required|string|max:225",
+                  "type": "text",
+                  "uuid": "e9f5a6b7-c758-4245-a324-101412d11b8a"
+                },
+                {
+                  "key": "phone",
+                  "value": "+20112308712",
+                  "description": "required|unique:users,phone",
+                  "type": "text",
+                  "uuid": "6a176dd0-8232-4316-94c6-fad10fbfdb36"
+                },
+                {
+                  "key": "email",
+                  "value": "ahmed@user1.usera",
+                  "description": "required|string|max:225|unique:users,email'",
+                  "type": "text",
+                  "uuid": "208e696f-45fd-4c41-b127-b3c520ee4387"
+                },
+                {
+                  "key": "birth_date",
+                  "value": "2000-01-01",
+                  "description": "required|date",
+                  "type": "text",
+                  "uuid": "abbd5137-f541-439e-a38c-89af260b10d9"
+                },
+                {
+                  "key": "national_id",
+                  "value": "20002211112335",
+                  "description": "required|max:14|unique:members,national_id",
+                  "type": "text",
+                  "uuid": "a6b25b6d-dce9-4f92-bc20-f981f57abb29"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{url}}/api/register",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "verify-phone",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "phone",
+                  "value": "+20112308712",
+                  "description": "required|exists:users,phone",
+                  "type": "text",
+                  "uuid": "6a176dd0-8232-4316-94c6-fad10fbfdb36"
+                },
+                {
+                  "key": "code",
+                  "value": "123456",
+                  "description": "required|digits:6",
+                  "type": "text",
+                  "uuid": "208e696f-45fd-4c41-b127-b3c520ee4387"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{url}}/api/verify-phone",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "verify-phone"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "Ahmed",
+                  "description": "required|digits:6",
+                  "type": "text",
+                  "uuid": "208e696f-45fd-4c41-b127-b3c520ee4387"
+                },
+                {
+                  "key": "phone",
+                  "value": "+2011230870",
+                  "description": "required|exists:users,phone",
+                  "type": "text",
+                  "uuid": "6a176dd0-8232-4316-94c6-fad10fbfdb36"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{url}}/api/login",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login-otp",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "phone",
+                  "value": "+2011230870",
+                  "description": "required|exists:users,phone",
+                  "type": "text",
+                  "uuid": "6a176dd0-8232-4316-94c6-fad10fbfdb36"
+                },
+                {
+                  "key": "code",
+                  "value": "123456",
+                  "description": "required|digits:6",
+                  "type": "text",
+                  "uuid": "208e696f-45fd-4c41-b127-b3c520ee4387"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{url}}/api/login-otp",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "login-otp"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "profile",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "5|354AOnqZNibcAx7iLEFZxalRx6KyQYYKd907J6myaeb0c888",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{url}}/api/user",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "user"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "logout",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "5|354AOnqZNibcAx7iLEFZxalRx6KyQYYKd907J6myaeb0c888",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{url}}/api/logout",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "logout"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Events",
+      "item": [
+        {
+          "name": "index",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "62|smuhVFrlk1av5FKjc2eRO8XLjnnP6qyEOQgRJjTC1664faf7",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{url}}/api/events",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "events"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "show",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "5|354AOnqZNibcAx7iLEFZxalRx6KyQYYKd907J6myaeb0c888",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{url}}/api/events/2",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "News",
+      "item": [
+        {
+          "name": "index",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "5|354AOnqZNibcAx7iLEFZxalRx6KyQYYKd907J6myaeb0c888",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{url}}/api/news",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "news"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "show",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "5|354AOnqZNibcAx7iLEFZxalRx6KyQYYKd907J6myaeb0c888",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{url}}/api/news/1",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "news",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Candidates",
+      "item": [
+        {
+          "name": "index",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "5|354AOnqZNibcAx7iLEFZxalRx6KyQYYKd907J6myaeb0c888",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{url}}/api/candidates",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "candidates"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "show",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "5|354AOnqZNibcAx7iLEFZxalRx6KyQYYKd907J6myaeb0c888",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{url}}/api/candidates/1",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "candidates",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Sliders",
+      "item": [
+        {
+          "name": "index",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "5|354AOnqZNibcAx7iLEFZxalRx6KyQYYKd907J6myaeb0c888",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{url}}/api/sliders",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "sliders"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "App Settings",
+      "item": [
+        {
+          "name": "index",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "5|354AOnqZNibcAx7iLEFZxalRx6KyQYYKd907J6myaeb0c888",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{url}}/api/app-settings",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "app-settings"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "url",
+      "value": "http://hezb-el-shaab.test/",
+      "type": "default"
+    }
+  ]
+}

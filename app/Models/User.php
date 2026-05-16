@@ -25,6 +25,7 @@ class User extends Authenticatable
         'name',
         'national_id',
         'birth_date',
+        'governorate_id',
         'email',
         'phone',
         'password',
@@ -79,6 +80,11 @@ class User extends Authenticatable
     public function member()
     {
         return $this->belongsTo(Member::class, 'member_id');
+    }
+
+    public function governorate()
+    {
+        return $this->belongsTo(Governorate::class);
     }
 
     public function memberReviewedBy()
