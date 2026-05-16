@@ -55,14 +55,20 @@
                                 <p class="text-muted">{{ $user->member->membership_number ?? __('messages.not_provided') }}</p>
                             </div>
 
-                            {{-- BD --}}
-                            <div class="col-md-6 mb-3">
-                                <h5 class="fw-bold">{{ __('messages.birth_date') }}</h5>
-                                <p class="text-muted">{{ $user->birth_date?->format('Y-m-d') ?? __('messages.not_provided') }}</p>
-                            </div>
+                        {{-- BD --}}
+                        <div class="col-md-6 mb-3">
+                            <h5 class="fw-bold">{{ __('messages.birth_date') }}</h5>
+                            <p class="text-muted">{{ $user->birth_date?->format('Y-m-d') ?? __('messages.not_provided') }}</p>
+                        </div>
 
-                            {{-- Member Status --}}
-                            <div class="col-md-6 mb-3">
+                        {{-- Governorate --}}
+                        <div class="col-md-6 mb-3">
+                            <h5 class="fw-bold">{{ __('messages.governorate') }}</h5>
+                            <p class="text-muted">{{ $user->governorate?->name ?? __('messages.not_provided') }}</p>
+                        </div>
+
+                        {{-- Member Status --}}
+                        <div class="col-md-6 mb-3">
                                 <h5 class="fw-bold">{{ __('messages.member_status') }}</h5>
                                 <p class="text-muted">
                                     @if ($user->member_status == 'active')

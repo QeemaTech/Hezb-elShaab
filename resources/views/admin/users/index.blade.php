@@ -7,12 +7,20 @@
                     <div class="card-header pb-0">
                         <div class="d-flex justify-content-between">
                             <h6>{{__('messages.users')}}</h6>
-                            @canany(['Users Create', 'Users'])
-                            <a href="{{ route('admin.users.create') }}" class="float-end me-1 btn btn-sm btn-primary">
-                                <i class="fa fa-plus-circle fa-lg"></i>
-                                {{ trans('messages.add_form_title', ['form' => trans(key: 'messages.user')]) }}
-                            </a>
-                            @endcan
+                            <div class="d-flex gap-2">
+                                <a href="{{ route('admin.exports.users', array_merge(request()->query(), ['format' => 'xlsx'])) }}" class="btn btn-sm btn-outline-success">
+                                    Export Excel
+                                </a>
+                                <a href="{{ route('admin.exports.users', array_merge(request()->query(), ['format' => 'csv'])) }}" class="btn btn-sm btn-outline-secondary">
+                                    Export CSV
+                                </a>
+                                @canany(['Users Create', 'Users'])
+                                <a href="{{ route('admin.users.create') }}" class="float-end me-1 btn btn-sm btn-primary">
+                                    <i class="fa fa-plus-circle fa-lg"></i>
+                                    {{ trans('messages.add_form_title', ['form' => trans(key: 'messages.user')]) }}
+                                </a>
+                                @endcan
+                            </div>
                         </div>
                         <form method="GET" action="{{ route('admin.users.index') }}" class="mt-3">
                             <input type="hidden" name="type" value="{{ $type ?? request('type', 'active-members') }}">

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Web\CandidateController;
 use App\Http\Controllers\Web\DistrictController;
 use App\Http\Controllers\Web\EventController;
+use App\Http\Controllers\Web\ExportController;
 use App\Http\Controllers\Web\GovernorateController;
 use App\Http\Controllers\Web\LocalUnitController;
 use App\Http\Controllers\Web\AboutUsController;
@@ -49,6 +50,12 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
     Route::middleware('permission:Users|Users List')->group(function () {
         Route::resource('users',UserController::class);
+        Route::get('exports/users', [ExportController::class, 'users'])->name('exports.users');
+        Route::get('exports/events', [ExportController::class, 'events'])->name('exports.events');
+        Route::get('exports/event-users', [ExportController::class, 'eventUsers'])->name('exports.event-users');
+        Route::get('exports/news', [ExportController::class, 'news'])->name('exports.news');
+        Route::get('exports/candidates', [ExportController::class, 'candidates'])->name('exports.candidates');
+        Route::get('exports/parliamentary-bodies', [ExportController::class, 'parliamentaryBodies'])->name('exports.parliamentary-bodies');
     });
 
     Route::middleware('permission:Users Member Action')->group(function () {
@@ -68,6 +75,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
         Route::get('complaints', [ComplaintController::class, 'index'])->name('complaints.index');
         Route::get('complaints/{id}', [ComplaintController::class, 'show'])->name('complaints.show');
         Route::patch('complaints/{id}/status', [ComplaintController::class, 'updateStatus'])->name('complaints.update-status');
+        Route::get('exports/complaints', [ExportController::class, 'complaints'])->name('exports.complaints');
     });
     Route::resource('sliders', SliderController::class)->except(['show']);
 
