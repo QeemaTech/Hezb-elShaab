@@ -58,4 +58,7 @@
     'created_successfully' => 'Created successfully',
     'updated_successfully' => 'Updated successfully',
     'deleted_successfully' => 'Deleted successfully',
+    'draft_events' => 'Draft Events',
+    'back_to_events' => 'Back to Events',
+    'no_draft_events_found' => 'No draft events found',
 );

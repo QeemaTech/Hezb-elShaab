@@ -9,7 +9,12 @@ class EventRepository
 {
     public function getAll()
     {
-        return Event::latest()->get();
+        return Event::published()->latest()->get();
+    }
+
+    public function getDrafts()
+    {
+        return Event::draft()->latest()->get();
     }
 
     public function findBySlug(string $slug)
@@ -41,11 +46,24 @@ class EventRepository
               $subQuery->where('users.id', $id);
         });
     })
+    ->published()
     ->paginate($limit);
+    }
+
+    public function draftIndex($id, $limit)
+    {
+        return Event::where(function ($query) use ($id) {
+            $query->where('is_private', 0)
+                ->orWhereHas('allowedUsers', function ($subQuery) use ($id) {
+                    $subQuery->where('users.id', $id);
+                });
+        })
+            ->draft()
+            ->paginate($limit);
     }
     public function find($id)
     {
-        return Event::with('sponsors','organizers')->find($id);
+        return Event::published()->with('sponsors','organizers')->find($id);
     }
     public function removeUser(Event $event, User $user)
     {

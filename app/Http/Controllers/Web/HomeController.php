@@ -61,6 +61,25 @@ class HomeController extends Controller
 
                 $items = $items->get();
                 break;
+
+            case 'member':
+                $items = User::query()
+                    ->leftJoin('members', 'users.member_id', '=', 'members.id')
+                    ->where('users.role', 'user')
+                    ->where('users.status', 1)
+                    ->whereNotNull('users.member_id')
+                    ->where('users.member_status', 'active')
+                    ->selectRaw("users.id as id, CONCAT(users.name, CASE WHEN members.national_id IS NOT NULL AND members.national_id != '' THEN CONCAT(' - ', members.national_id) ELSE '' END) as text");
+
+                if ($value != '') {
+                    $items->where(function ($query) use ($value) {
+                        $query->where('users.name', 'LIKE', '%' . $value . '%')
+                            ->orWhere('members.national_id', 'LIKE', '%' . $value . '%');
+                    });
+                }
+
+                $items = $items->get();
+                break;
             default:
                 break;
         }

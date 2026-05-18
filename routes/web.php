@@ -87,6 +87,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     // Route::middleware('role:super admin|permission:Events')->group(function () {
     // Route::middleware(['role_or_permission:super admin|Events'])->group(function () {
     // Route::group(function () {
+        Route::get('events/drafts', [EventController::class, 'drafts'])->name('events.drafts');
         Route::resource('events', EventController::class);
         Route::delete('events/{event}/users/{user}', [EventController::class, 'removeUser'])->name('events.remove-user');
         Route::post('events/{event}/users', [EventController::class, 'addUser'])->name('events.add-users');

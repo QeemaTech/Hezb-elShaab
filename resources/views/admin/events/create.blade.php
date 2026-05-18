@@ -150,7 +150,7 @@
                                     <label class="form-control-label">{{ __('messages.event_users') }}</label>
                                     <select name="event_users[]" id="event_users" class="select2js form-control"
                                         placeholder="{{ __('messages.select_event_users') }}"
-                                        data-ajax--url="{{ route('ajax-list', ['type' => 'users']) }}"
+                                        data-ajax--url="{{ route('ajax-list', ['type' => 'member']) }}"
                                         data-ajax--cache="true" multiple>
                                     </select>
                                     <small class="text-muted">{{ __('messages.search_name_or_national_id_help') }}</small>

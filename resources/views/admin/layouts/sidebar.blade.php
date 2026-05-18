@@ -33,6 +33,15 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link " href="{{route('admin.events.drafts')}}">
+                    <div
+                        class="icon icon-shape icon-sm border-radius-md text-center ms-2 d-flex align-items-center justify-content-center">
+                        <i class="ni ni-archive-2 text-secondary text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text me-1">{{__('messages.draft_events')}}</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link " href="{{route('admin.news.index')}}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center ms-2 d-flex align-items-center justify-content-center">
@@ -89,7 +98,7 @@
                     </a>
                 </li>
             @endcan
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link " href="">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center ms-2 d-flex align-items-center justify-content-center">
@@ -97,10 +106,10 @@
                     </div>
                     <span class="nav-link-text me-1">{{__('messages.chats')}}</span>
                 </a>
-            </li>
+            </li> -->
             @hasrole('super admin')
                 <li class="nav-item">
-                    <a class="nav-link " href="">
+                    <a class="nav-link " href="{{route('admin.roles.index')}}">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center ms-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-key-25 text-primary text-sm opacity-10"></i>

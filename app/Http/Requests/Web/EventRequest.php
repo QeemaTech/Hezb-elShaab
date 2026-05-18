@@ -16,7 +16,7 @@ class EventRequest extends FormRequest
             'title'       => 'required|string|max:255',
             'image'       => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:2048',
             'video'       => 'nullable|mimes:mp4,mov,avi,webm|max:10240',
-            'date'        => 'nullable|date',
+            'date'        => 'nullable|date|after_or_equal:now',
             'address'     => 'nullable|string|max:255',
             'description' => 'nullable|string',
             'rules'       => 'nullable|string',
@@ -50,6 +50,7 @@ class EventRequest extends FormRequest
             'video.max'      => 'The video must be less than 10MB.',
             'latitude.between' => 'Latitude must be between -90 and 90.',
             'longitude.between' => 'Longitude must be between -180 and 180.',
+            'date.after_or_equal' => 'Event date cannot be in the past.',
         ];
     }
 }

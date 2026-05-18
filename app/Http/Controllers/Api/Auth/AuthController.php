@@ -8,6 +8,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 
@@ -23,7 +24,8 @@ class AuthController extends Controller
             'is_member' => 'required|boolean',
             'governorate_id' => 'required|integer|exists:governorates,id',
             'national_id' => 'required_if:is_member,1|prohibited_unless:is_member,1|nullable|max:14',
-        ]);
+            'password' => 'required|string|min:8|confirmed',
+            ]);
 
         $code = 123456;
 
@@ -73,6 +75,7 @@ class AuthController extends Controller
             'member_status' => $isMember ? 'active' : 'pending',
             'status' => 0,
             'code' => $code,
+            'password' => Hash::make($request->password),
         ]);
         return response()->json([
             'message' => 'تم إنشاء حسابك بنجاح، يرجى إتمام عملية تأكيد رقم الهاتف لتفعيل الحساب.',
@@ -113,13 +116,15 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'name'  => 'required|string|max:225',
             'phone' => 'required|exists:users,phone',
+            'password' => 'required|string',
         ]);
-        $user = User::where('phone', $request->phone)->where('name',$request->name)->first();
-        if(!$user){
-                return response()->json([
-                'message' => __('messages.wrong_name_or_phone'),
+
+        $user = User::where('phone', $request->phone)->first();
+
+        if (! $user || ! Hash::check($request->password, $user->password)) {
+            return response()->json([
+                'message' => __('messages.wrong_password_or_phone'),
             ], 422);
         }
         // $code = random_int(100000, 999999);

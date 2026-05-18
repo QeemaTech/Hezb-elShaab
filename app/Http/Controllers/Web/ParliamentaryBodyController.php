@@ -50,6 +50,7 @@ class ParliamentaryBodyController extends Controller
     public function store(ParliamentaryBodyRequest $request)
     {
         $this->service->createParliamentaryBody($request->validated() + [
+            'status' => (bool) $request->boolean('status'),
             'image' => $request->file('image'),
         ]);
 
@@ -70,6 +71,7 @@ class ParliamentaryBodyController extends Controller
     public function update(ParliamentaryBodyRequest $request, ParliamentaryBody $parliamentary_body)
     {
         $this->service->updateParliamentaryBody($parliamentary_body, $request->validated() + [
+            'status' => (bool) $request->boolean('status'),
             'image' => $request->file('image'),
         ]);
 

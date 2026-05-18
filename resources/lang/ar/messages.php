@@ -86,6 +86,7 @@
     'please_verifiy_phone' => 'برجاء توثيق رقم الهاتف',
     'you_account_is_inactivated' => 'لقد تم تعطيل حسابك، برجاء التواصل مع احد المشرفين',
     'wrong_name_or_phone' => 'الاسم او رقم الهاتف خطأ',
+    'wrong_password_or_phone' => 'كلمة المرور  او رقم الهاتف خطأ',
     'user_loged_successfully'=> 'تم تسجيل دخول المستخدم بنجاح',
     'Name' => 'الأسم',
     'Image' => 'الصورة',
@@ -212,4 +213,8 @@
     'created_successfully' => 'تم الإنشاء بنجاح',
     'updated_successfully' => 'تم التحديث بنجاح',
     'deleted_successfully' => 'تم الحذف بنجاح',
+    'update_candidates'=> 'تعديل المرشح',
+    'draft_events' => 'الفعاليات المؤرشفة',
+    'back_to_events' => 'العودة إلى الفعاليات',
+    'no_draft_events_found' => 'لا توجد فعاليات مؤرشفة'
 );
