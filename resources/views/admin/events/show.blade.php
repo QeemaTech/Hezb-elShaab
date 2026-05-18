@@ -262,7 +262,7 @@
                                 dropdownParent: $('.swal2-popup'),
                                 placeholder: '{{ __('messages.select_event_users') }}',
                                 ajax: {
-                                    url: '{{ route('ajax-list', ['type' => 'users']) }}',
+                                    url: '{{ route('ajax-list', ['type' => 'member']) }}',
                                     dataType: 'json',
                                     delay: 250,
                                     processResults: function(data) {

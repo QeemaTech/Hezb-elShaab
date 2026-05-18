@@ -47,6 +47,7 @@ class CandidateController extends Controller
     public function store(CandidateRequest $request)
     {
         $this->candidateService->createCandidate($request->validated() + [
+            'status' => (bool) $request->boolean('status'),
             'image' => $request->file('image'),
         ]);
         return redirect()->route('admin.candidates.index')->with('success', 'Candidate created!');
@@ -65,6 +66,7 @@ class CandidateController extends Controller
     {
 
         $this->candidateService->updateCandidate($candidate, $request->validated() + [
+            'status' => (bool) $request->boolean('status'),
             'image' => $request->file('image'),
         ]);
         return redirect()->route('admin.candidates.index')->with('success', 'Candidate updated!');

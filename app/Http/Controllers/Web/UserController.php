@@ -51,6 +51,7 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         $this->userService->createUser($request->validated() + [
+            'status' => (bool) $request->boolean('status'),
             'image' => $request->file('image'),
             'video' => $request->file('video')
         ]);
@@ -69,6 +70,7 @@ class UserController extends Controller
     public function update(UserRequest $request, User $user)
     {
         $this->userService->updateUser($user, $request->validated() + [
+            'status' => (bool) $request->boolean('status'),
             'image' => $request->file('image'),
             'video' => $request->file('video')
         ]);

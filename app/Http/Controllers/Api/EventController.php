@@ -18,6 +18,12 @@ class EventController extends Controller
     public function index(){
         return  EventResource::collection($this->eventService->index());
     }
+
+    public function drafts()
+    {
+        return EventResource::collection($this->eventService->draftIndex());
+    }
+
     public function show($id){
         return  new EventResource($this->eventService->show($id));
     }

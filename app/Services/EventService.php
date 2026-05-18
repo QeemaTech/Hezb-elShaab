@@ -24,6 +24,11 @@ class EventService
         return $this->eventRepo->getAll();
     }
 
+    public function getDraftEvents()
+    {
+        return $this->eventRepo->getDrafts();
+    }
+
     public function getEventBySlug(string $slug)
     {
         return $this->eventRepo->findBySlug($slug);
@@ -32,6 +37,8 @@ class EventService
     public function createEvent(array $data)
     {
         DB::transaction(function () use ($data) {
+            $data['publish_status'] = 'published';
+
             // Store image if uploaded
             if (isset($data['image']) && $data['image']->isValid()) {
                 $data['image'] = $data['image']->store('events/images', 'public');
@@ -78,6 +85,8 @@ class EventService
 
     public function updateEvent(Event $event, array $data)
     {
+        $data['publish_status'] = $event->publish_status ?? 'published';
+
         // Replace image if new one uploaded
         if (isset($data['image']) && $data['image']->isValid()) {
             // Delete old image if exists
@@ -150,6 +159,15 @@ class EventService
         $limit =  request()->input('limit', 15);
         return $this->eventRepo->index($id,$limit);
     }
+
+    public function draftIndex()
+    {
+        $id = Auth::user()->id;
+        $limit = request()->input('limit', 15);
+
+        return $this->eventRepo->draftIndex($id, $limit);
+    }
+
     public function show($id){
         return $this->eventRepo->find($id);
     }

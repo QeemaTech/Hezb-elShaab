@@ -17,6 +17,7 @@ class Event extends Model
         'description',
         'rules',
         'status',
+        'publish_status',
         'chat_available',
         'is_private',
         'latitude',
@@ -85,5 +86,15 @@ class Event extends Model
     public function scopePrivate($query)
     {
         return $query->where('is_private', 1);
+    }
+
+    public function scopePublished($query)
+    {
+        return $query->where('publish_status', 'published');
+    }
+
+    public function scopeDraft($query)
+    {
+        return $query->where('publish_status', 'draft');
     }
 }

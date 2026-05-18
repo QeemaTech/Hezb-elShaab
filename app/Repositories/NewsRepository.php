@@ -34,7 +34,7 @@ class NewsRepository
 
     public function index($limit)
     {
-        return News::paginate($limit);
+        return News::where('status',"1")->paginate($limit);
     }
     public function find($id)
     {

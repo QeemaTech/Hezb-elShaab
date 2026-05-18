@@ -27,6 +27,17 @@ class EventController extends Controller
         return view('admin.events.index', compact('events', 'breadcrumbs'));
     }
 
+    public function drafts()
+    {
+        $events = $this->eventService->getDraftEvents();
+        $breadcrumbs = [
+            ['name' => __('messages.events'), 'url' => route('admin.events.index')],
+            ['name' => __('messages.draft_events'), 'url' => route('admin.events.drafts')],
+        ];
+
+        return view('admin.events.drafts', compact('events', 'breadcrumbs'));
+    }
+
     public function show($slug)
     {
         $event = $this->eventService->getEventBySlug($slug);

@@ -47,6 +47,7 @@ class NewsController extends Controller
     public function store(NewsRequest $request)
     {
         $this->newsService->createNews($request->validated() + [
+            'status' => (bool) $request->boolean('status'),
             'image' => $request->file('image'),
             'video' => $request->file('video')
         ]);
@@ -65,6 +66,7 @@ class NewsController extends Controller
     public function update(NewsRequest $request, News $news)
     {
         $this->newsService->updateNews($news, $request->validated() + [
+            'status' => (bool) $request->boolean('status'),
             'image' => $request->file('image'),
             'video' => $request->file('video')
         ]);

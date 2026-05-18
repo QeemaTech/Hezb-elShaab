@@ -40,7 +40,7 @@ class ComplaintController extends Controller
             'status' => $validated['status'],
         ]);
 
-        return redirect()->route('admin.complaints.show', $complaint->id)
+        return redirect()->route('admin.complaints.index', $complaint->id)
             ->with('success', __('messages.settings_updated'));
     }
 }
