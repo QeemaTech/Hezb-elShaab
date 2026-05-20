@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 15, 2026 at 10:10 PM
+-- Generation Time: May 20, 2026 at 10:26 AM
 -- Server version: 8.4.3
 -- PHP Version: 8.3.30
 
@@ -213,6 +213,7 @@ CREATE TABLE `events` (
   `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `rules` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `status` tinyint(1) NOT NULL DEFAULT '1',
+  `publish_status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'published',
   `chat_available` tinyint(1) NOT NULL DEFAULT '0',
   `is_private` tinyint(1) NOT NULL DEFAULT '0',
   `latitude` decimal(10,8) DEFAULT NULL,
@@ -226,12 +227,12 @@ CREATE TABLE `events` (
 -- Dumping data for table `events`
 --
 
-INSERT INTO `events` (`id`, `slug`, `title`, `image`, `video`, `date`, `address`, `description`, `rules`, `status`, `chat_available`, `is_private`, `latitude`, `longitude`, `user_id`, `created_at`, `updated_at`) VALUES
-(2, 'asm-faaaly-tgryby', 'أسم فعالية تجريبي', 'events/images/HZt8Opa7fSKNQwPMEZCUQvtMjkVPdNfnfTTmA5IU.jpg', 'events/videos/rm67Xi05lRk3ibHfz1JPvDIlWpGhRdFNKUif7UgD.mp4', '2025-08-31 17:00:00', '3 شارع مكرم عبيد - القاهرة', 'هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام \"هنا يوجد محتوى نصي، هنا يوجد محتوى نصيهناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام \"هنا يوجد محتوى نصي، هنا يوجد محتوى نصي', 'هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام \"هنا يوجد محتوى نصي، هنا يوجد محتوى نصيهناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام \"هنا يوجد محتوى نصي، هنا يوجد محتوى نصي', 1, 0, 0, 33.00000000, 35.00000000, 1, '2025-08-10 07:56:26', '2025-08-10 08:03:41'),
-(3, 'tgrb', 'تجربة', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 0, NULL, NULL, 1, '2025-08-10 10:25:31', '2025-08-10 10:25:31'),
-(8, 'faaaly-gdyd', 'فعالية جديدة', 'events/images/nl21Mo7kYCyIZycHgdTNdCHH5ZHToPBkGJBO8Xf0.png', 'events/videos/jdQnr4Oi7SwLFZ6ows9A7TeTFooX10sTJ37ZLbBx.mp4', '2025-08-31 18:00:00', '30 شارع مكرم عبيد - القاهرة', '<p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام &quot;هنا يوجد محتوى نصي، هنا يوجد محتوى نصيهناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام &quot;هنا يوجد محتوى نصي، هنا يوجد محتوى نصي</p><p data-f-id=\"pbf\" style=\"text-align: center; font-size: 14px; margin-top: 30px; opacity: 0.65; font-family: sans-serif;\">Powered by <a href=\"https://www.froala.com/wysiwyg-editor?pb=1\" title=\"Froala Editor\">Froala Editor</a></p>', '<p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام &quot;هنا يوجد محتوى نصي، هنا يوجد محتوى نصيهناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام &quot;هنا يوجد محتوى نصي، هنا يوجد محتوى نصي</p><p data-f-id=\"pbf\" style=\"text-align: center; font-size: 14px; margin-top: 30px; opacity: 0.65; font-family: sans-serif;\">Powered by <a href=\"https://www.froala.com/wysiwyg-editor?pb=1\" title=\"Froala Editor\">Froala Editor</a></p>', 1, 0, 0, 33.00000000, 35.00000000, 1, '2025-08-10 12:23:56', '2025-08-14 11:52:12'),
-(9, 'tgrb-llfaaalyat', 'تجربة للفاعليات', 'events/images/2c8MV2jrkh3Zyej9252Lrx4msLpiq4NcgJOVCPUP.jpg', 'events/videos/Jp6xGIUt4fC3PsXpE5fYRgKovdmO3oCGDZnjlzHS.mp4', '2025-08-20 11:00:00', '30 شارع مكرم عبيد - القاهرة', '<p style=\"text-align: right;\"><strong><span style=\"font-family: Georgia,serif;\">هناك حقيقة مثبتة</span></strong><span style=\"font-family: Georgia,serif;\">&nbsp;منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ</span> <span style=\"color: rgb(184, 49, 47);\">طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام &quot;هنا</span></p>', '<ul><li style=\"text-align: right; font-family: Tahoma, Geneva, sans-serif;\">هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما&nbsp;</li><li style=\"text-align: right; font-family: Tahoma, Geneva, sans-serif;\">هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما&nbsp;</li><li style=\"text-align: right; font-family: Tahoma, Geneva, sans-serif;\">هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما&nbsp;</li><li style=\"text-align: right; font-family: Tahoma, Geneva, sans-serif;\">هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما&nbsp;</li><li style=\"text-align: right; font-family: Tahoma, Geneva, sans-serif;\">هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما&nbsp;</li><li style=\"text-align: right; font-family: Tahoma, Geneva, sans-serif;\">هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما&nbsp;</li></ul>', 1, 1, 0, 33.00000000, 35.00000000, 1, '2025-08-11 05:19:28', '2025-08-11 05:53:57'),
-(10, 'tgrb-thdyd-ashkhas', 'تجربة تحديد اشخاص', 'events/images/oAoclR2JJfRYQXeGmE0vn5SGaIuntOqJy62hvr2U.jpg', NULL, '2025-08-15 20:00:00', '30 شارع مكرم عبيد - القاهرة', '<p style=\"text-align: right;\">تيست</p>', '<p style=\"text-align: right;\" id=\"isPasted\">تيست</p>', 1, 1, 1, 33.00000000, 35.00000000, 1, '2025-08-12 05:58:54', '2025-08-12 05:58:54');
+INSERT INTO `events` (`id`, `slug`, `title`, `image`, `video`, `date`, `address`, `description`, `rules`, `status`, `publish_status`, `chat_available`, `is_private`, `latitude`, `longitude`, `user_id`, `created_at`, `updated_at`) VALUES
+(2, 'asm-faaaly-tgryby', 'أسم فعالية تجريبي', 'events/images/HZt8Opa7fSKNQwPMEZCUQvtMjkVPdNfnfTTmA5IU.jpg', 'events/videos/rm67Xi05lRk3ibHfz1JPvDIlWpGhRdFNKUif7UgD.mp4', '2025-08-31 17:00:00', '3 شارع مكرم عبيد - القاهرة', 'هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام \"هنا يوجد محتوى نصي، هنا يوجد محتوى نصيهناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام \"هنا يوجد محتوى نصي، هنا يوجد محتوى نصي', 'هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام \"هنا يوجد محتوى نصي، هنا يوجد محتوى نصيهناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام \"هنا يوجد محتوى نصي، هنا يوجد محتوى نصي', 1, 'published', 0, 0, 33.00000000, 35.00000000, 1, '2025-08-10 07:56:26', '2025-08-10 08:03:41'),
+(3, 'tgrb', 'تجربة', NULL, NULL, NULL, NULL, NULL, NULL, 1, 'published', 0, 0, NULL, NULL, 1, '2025-08-10 10:25:31', '2025-08-10 10:25:31'),
+(8, 'faaaly-gdyd', 'فعالية جديدة', 'events/images/nl21Mo7kYCyIZycHgdTNdCHH5ZHToPBkGJBO8Xf0.png', 'events/videos/jdQnr4Oi7SwLFZ6ows9A7TeTFooX10sTJ37ZLbBx.mp4', '2025-08-31 18:00:00', '30 شارع مكرم عبيد - القاهرة', '<p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام &quot;هنا يوجد محتوى نصي، هنا يوجد محتوى نصيهناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام &quot;هنا يوجد محتوى نصي، هنا يوجد محتوى نصي</p><p data-f-id=\"pbf\" style=\"text-align: center; font-size: 14px; margin-top: 30px; opacity: 0.65; font-family: sans-serif;\">Powered by <a href=\"https://www.froala.com/wysiwyg-editor?pb=1\" title=\"Froala Editor\">Froala Editor</a></p>', '<p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام &quot;هنا يوجد محتوى نصي، هنا يوجد محتوى نصيهناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام &quot;هنا يوجد محتوى نصي، هنا يوجد محتوى نصي</p><p data-f-id=\"pbf\" style=\"text-align: center; font-size: 14px; margin-top: 30px; opacity: 0.65; font-family: sans-serif;\">Powered by <a href=\"https://www.froala.com/wysiwyg-editor?pb=1\" title=\"Froala Editor\">Froala Editor</a></p>', 1, 'published', 0, 0, 33.00000000, 35.00000000, 1, '2025-08-10 12:23:56', '2025-08-14 11:52:12'),
+(9, 'tgrb-llfaaalyat', 'تجربة للفاعليات', 'events/images/2c8MV2jrkh3Zyej9252Lrx4msLpiq4NcgJOVCPUP.jpg', 'events/videos/Jp6xGIUt4fC3PsXpE5fYRgKovdmO3oCGDZnjlzHS.mp4', '2025-08-20 11:00:00', '30 شارع مكرم عبيد - القاهرة', '<p style=\"text-align: right;\"><strong><span style=\"font-family: Georgia,serif;\">هناك حقيقة مثبتة</span></strong><span style=\"font-family: Georgia,serif;\">&nbsp;منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ</span> <span style=\"color: rgb(184, 49, 47);\">طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام &quot;هنا</span></p>', '<ul><li style=\"text-align: right; font-family: Tahoma, Geneva, sans-serif;\">هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما&nbsp;</li><li style=\"text-align: right; font-family: Tahoma, Geneva, sans-serif;\">هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما&nbsp;</li><li style=\"text-align: right; font-family: Tahoma, Geneva, sans-serif;\">هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما&nbsp;</li><li style=\"text-align: right; font-family: Tahoma, Geneva, sans-serif;\">هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما&nbsp;</li><li style=\"text-align: right; font-family: Tahoma, Geneva, sans-serif;\">هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما&nbsp;</li><li style=\"text-align: right; font-family: Tahoma, Geneva, sans-serif;\">هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما&nbsp;</li></ul>', 1, 'published', 1, 0, 33.00000000, 35.00000000, 1, '2025-08-11 05:19:28', '2025-08-11 05:53:57'),
+(10, 'tgrb-thdyd-ashkhas', 'تجربة تحديد اشخاص', 'events/images/oAoclR2JJfRYQXeGmE0vn5SGaIuntOqJy62hvr2U.jpg', NULL, '2025-08-15 20:00:00', '30 شارع مكرم عبيد - القاهرة', '<p style=\"text-align: right;\">تيست</p>', '<p style=\"text-align: right;\" id=\"isPasted\">تيست</p>', 1, 'published', 1, 1, 33.00000000, 35.00000000, 1, '2025-08-12 05:58:54', '2025-08-12 05:58:54');
 
 -- --------------------------------------------------------
 
@@ -312,6 +313,23 @@ INSERT INTO `event_user` (`id`, `event_id`, `user_id`, `created_at`, `updated_at
 (5, 10, 27, '2025-08-14 11:55:11', '2025-08-14 11:55:11'),
 (6, 10, 29, '2025-08-14 11:55:26', '2025-08-14 11:55:26'),
 (7, 10, 30, '2025-08-14 12:32:24', '2025-08-14 12:32:24');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `export_logs`
+--
+
+CREATE TABLE `export_logs` (
+  `id` bigint UNSIGNED NOT NULL,
+  `user_id` bigint UNSIGNED DEFAULT NULL,
+  `export_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `format` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `records_count` int UNSIGNED NOT NULL DEFAULT '0',
+  `filters` json DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -415,6 +433,30 @@ INSERT INTO `local_units` (`id`, `district_id`, `name`, `status`, `sort_order`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `log_system`
+--
+
+CREATE TABLE `log_system` (
+  `id` bigint UNSIGNED NOT NULL,
+  `user_id` bigint UNSIGNED DEFAULT NULL,
+  `action` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `category` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `method` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `route_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status_code` smallint UNSIGNED DEFAULT NULL,
+  `ip_address` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_agent` text COLLATE utf8mb4_unicode_ci,
+  `target_id` bigint UNSIGNED DEFAULT NULL,
+  `target_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `payload` json DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `members`
 --
 
@@ -510,7 +552,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (35, '2026_05_16_090100_create_districts_table', 27),
 (36, '2026_05_16_090200_create_local_units_table', 27),
 (37, '2026_05_16_090300_create_party_units_table', 27),
-(38, '2026_05_16_120000_create_parliamentary_bodies_table', 28);
+(38, '2026_05_16_120000_create_parliamentary_bodies_table', 28),
+(39, '2026_05_16_130000_add_governorate_id_to_users_table', 29),
+(40, '2026_05_16_140000_create_export_logs_table', 29),
+(41, '2026_05_16_150000_create_log_system_table', 29),
+(42, '2026_05_18_120000_add_publish_status_to_events_table', 29);
 
 -- --------------------------------------------------------
 
@@ -908,6 +954,7 @@ CREATE TABLE `users` (
   `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `national_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `birth_date` date DEFAULT NULL,
+  `governorate_id` bigint UNSIGNED DEFAULT NULL,
   `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -922,28 +969,28 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `uuid`, `name`, `phone`, `email`, `phone_verified_at`, `password`, `status`, `image`, `national_id`, `birth_date`, `remember_token`, `created_at`, `updated_at`, `role`, `code`, `member_id`, `member_status`, `member_reviewed_by`) VALUES
-(1, 'aa44m900-af47-43d4-b21f-de68820ax111', 'Admin', '0123456789', 'admin@admin.com', '2025-08-10 05:41:23', '$2y$12$0miEZOU6KReKo0lmyszxd.t6I//S8tXAVqHhB1v7iasYMz.6kz.OS', 1, NULL, NULL, NULL, 'eTxhXby454Tvr03a3vctnIzcMCx0mPXfCzzM2UHKOFcgXPfJoeFGLdb6xfHN', '2025-08-10 05:41:24', '2025-08-11 07:25:23', 'admin', NULL, NULL, NULL, NULL),
-(2, '4629884d-ce53-44b6-bc6d-ba977c444fe8', 'Ahmed', '0123456897', 'Ahmed@admin.com', NULL, '$2y$12$ccku19rWErgQ4vTN0N9dueVZ4Wx9h1/2adzbrGppfXAFQbE6rNZkG', 1, 'users/images/0VampMfY8RrdVsygqYePwsQyZUrKXZcDeFKGHlRj.jpg', NULL, NULL, NULL, '2025-08-10 09:46:35', '2025-08-10 09:46:35', 'admin', NULL, NULL, NULL, NULL),
-(4, '3e045938-69c5-4c98-9f94-92dffc8eea78', 'khaled1', '01224785361', 'khaled@admin.com1', NULL, '$2y$12$iH9eIX4fVyCd/Agqd.bIN.s6ErFmy.b6jPuJwyrqdWJVMouclcg3G', 1, NULL, NULL, NULL, NULL, '2025-08-10 09:48:22', '2025-08-10 10:01:59', 'admin', NULL, NULL, NULL, NULL),
-(10, '37d1d84d-b735-4eb7-a340-32df3a7df1ee', 'Ahmed', '+2011230871', 'ahmed@user1.user', '2025-08-12 09:16:50', NULL, 1, NULL, NULL, '2000-01-01', NULL, '2025-08-12 09:15:46', '2025-08-12 09:16:50', 'user', NULL, 5, 'pending', NULL),
-(12, '0f437458-40b4-402e-b615-73f982086a7f', 'Ahmedd', '+2011230872', 'ahmedd@user.user', '2025-08-13 11:37:57', NULL, 1, NULL, NULL, '2000-01-01', NULL, '2025-08-13 11:14:18', '2025-08-13 12:47:48', 'user', NULL, 7, 'pending', NULL),
-(13, '7743805c-a887-42f1-af0f-da719f61d5bb', 'aag', '+2011230885', 'ahmedd@user.userr', NULL, NULL, 0, NULL, NULL, '2000-01-13', NULL, '2025-08-13 11:25:08', '2025-08-13 11:25:08', 'user', '123456', 8, 'pending', NULL),
-(16, '92b0c4d2-31c2-419f-b187-4065c5f62067', 'test', '+2011230800', 'test@test.com', '2025-08-13 11:35:22', NULL, 1, NULL, NULL, '2000-01-04', NULL, '2025-08-13 11:35:10', '2025-08-13 11:35:22', 'user', NULL, 11, 'pending', NULL),
-(17, 'd0cf928e-a1b8-4735-b71c-8b3f103eabf6', 'test', '+2011230000', 'test@admin.com', '2025-08-13 11:43:02', NULL, 1, NULL, NULL, '2000-01-19', NULL, '2025-08-13 11:42:50', '2025-08-13 11:43:02', 'user', NULL, 12, 'pending', NULL),
-(18, 'cdb92eb2-5e5a-4d20-8839-1daf26ebbb0c', 'test', '+2011230001', 'test@demo.com', '2025-08-13 11:44:46', NULL, 1, NULL, NULL, '2000-01-26', NULL, '2025-08-13 11:44:36', '2025-08-13 11:49:29', 'user', NULL, 13, 'pending', NULL),
-(19, '58259ad0-a191-4bfb-a380-b8397a62acec', 'test', '+2065498112', 'testt@test.com', '2025-08-13 13:05:13', NULL, 1, NULL, NULL, '2000-01-13', NULL, '2025-08-13 13:05:03', '2025-08-13 13:05:13', 'user', NULL, 14, 'pending', NULL),
-(20, '600c11e2-6396-4c25-868a-f6a54fa974ba', 'Ahmed', '+20112308712', 'ahmed@user1.usera', '2025-08-13 13:12:44', NULL, 1, NULL, NULL, '2000-01-01', NULL, '2025-08-13 13:12:24', '2025-08-13 13:12:44', 'user', NULL, 15, 'pending', NULL),
-(21, 'c219b3cb-b59e-44dd-b16d-5161a1d93e6d', 'ayat', '+2098765412', 'ayat@test.com', '2025-08-14 06:41:21', NULL, 1, NULL, NULL, '2000-01-26', NULL, '2025-08-14 06:41:08', '2025-08-14 06:41:21', 'user', NULL, 16, 'pending', NULL),
-(27, 'e831ee5b-d116-4adf-b42f-544b022aa459', 'osama', '+201007988964', 'osamadiab097@gmail.com', '2025-08-14 10:57:48', NULL, 1, NULL, NULL, '2025-08-14', NULL, '2025-08-14 10:57:34', '2025-08-14 10:57:48', 'user', NULL, 22, 'active', 1),
-(28, '4a358367-2ba9-4819-a288-f809024d4f44', 'abas', '+201140051720', 'abas@gmail.com', NULL, NULL, 0, NULL, NULL, '2000-01-27', NULL, '2025-08-14 11:09:48', '2025-08-14 11:09:48', 'user', '123456', 23, 'pending', NULL),
-(29, 'ffc32b82-befd-49e6-b2cd-00edc84c2c12', 'ahh', '+201234567895', 'ahh@test.com', '2025-08-14 11:17:59', NULL, 1, NULL, NULL, '2000-01-27', NULL, '2025-08-14 11:17:48', '2025-08-14 12:35:22', 'user', NULL, 24, 'active', 1),
-(30, '3ab0e55b-20a7-482e-a4a4-9512b05a56a6', 'osama', '+201122345678', 'osama@test.com', '2025-08-14 11:23:10', NULL, 1, NULL, NULL, '2000-01-20', NULL, '2025-08-14 11:22:59', '2025-08-14 12:26:59', 'user', NULL, 25, 'active', 1),
-(31, '2ed36734-2d79-4ac7-a876-9b51b5476b4e', 'nada', '+201122334567', 'nada@gmail.com', '2025-08-14 11:43:05', NULL, 1, NULL, '36987452125441', '2000-01-20', NULL, '2025-08-14 11:42:55', '2025-08-14 11:43:05', 'user', NULL, 26, 'active', 1),
-(32, '9543474f-910e-42b8-bccf-be787b4f59b9', 'ahmeddd', '+201245789633', 'ahmeddd@test.com', '2025-08-14 11:44:23', NULL, 1, NULL, NULL, '2000-01-27', NULL, '2025-08-14 11:44:13', '2025-08-14 12:37:16', 'user', NULL, 27, 'active', 1),
-(33, 'cd47addd-9adf-4f02-bb72-35184e95fc85', 'ayat', '+211123456789', 'ayat@gmail.con', '2025-12-10 11:31:30', NULL, 1, NULL, NULL, '2000-01-09', NULL, '2025-12-10 11:31:06', '2025-12-10 11:31:30', 'user', NULL, 28, 'pending', NULL),
-(34, 'a99319c2-3350-4c98-bbcf-576ca7e486f5', 'Ahmed', '+20112308711', 'ahmedd@user1.usera', '2026-03-23 11:33:12', NULL, 1, NULL, NULL, '2000-01-01', NULL, '2026-03-23 11:32:14', '2026-03-23 11:33:30', 'user', '123456', 29, 'pending', NULL),
-(36, '02143f7b-6b85-4560-94c9-49aa6fb6bfb3', 'Ahmed Salem', '01159537854', 'el3amed22@gmail.com', NULL, '$2y$12$VpbJPozBtrhmisumPumup.wXn75WzEviAO1rTbHfZQ.V..k3eMHCG', 1, 'users/images/svAKm7TZySjSzPS7QNcd1MG1AFlWzQo04ozsKYYt.png', '3010902143005', NULL, NULL, '2026-05-15 17:22:14', '2026-05-15 17:22:14', 'admin', NULL, NULL, NULL, NULL);
+INSERT INTO `users` (`id`, `uuid`, `name`, `phone`, `email`, `phone_verified_at`, `password`, `status`, `image`, `national_id`, `birth_date`, `governorate_id`, `remember_token`, `created_at`, `updated_at`, `role`, `code`, `member_id`, `member_status`, `member_reviewed_by`) VALUES
+(1, 'aa44m900-af47-43d4-b21f-de68820ax111', 'Admin', '0123456789', 'admin@admin.com', '2025-08-10 05:41:23', '$2y$12$0miEZOU6KReKo0lmyszxd.t6I//S8tXAVqHhB1v7iasYMz.6kz.OS', 1, NULL, NULL, NULL, NULL, 'eTxhXby454Tvr03a3vctnIzcMCx0mPXfCzzM2UHKOFcgXPfJoeFGLdb6xfHN', '2025-08-10 05:41:24', '2025-08-11 07:25:23', 'admin', NULL, NULL, NULL, NULL),
+(2, '4629884d-ce53-44b6-bc6d-ba977c444fe8', 'Ahmed', '0123456897', 'Ahmed@admin.com', NULL, '$2y$12$ccku19rWErgQ4vTN0N9dueVZ4Wx9h1/2adzbrGppfXAFQbE6rNZkG', 1, 'users/images/0VampMfY8RrdVsygqYePwsQyZUrKXZcDeFKGHlRj.jpg', NULL, NULL, NULL, NULL, '2025-08-10 09:46:35', '2025-08-10 09:46:35', 'admin', NULL, NULL, NULL, NULL),
+(4, '3e045938-69c5-4c98-9f94-92dffc8eea78', 'khaled1', '01224785361', 'khaled@admin.com1', NULL, '$2y$12$iH9eIX4fVyCd/Agqd.bIN.s6ErFmy.b6jPuJwyrqdWJVMouclcg3G', 1, NULL, NULL, NULL, NULL, NULL, '2025-08-10 09:48:22', '2025-08-10 10:01:59', 'admin', NULL, NULL, NULL, NULL),
+(10, '37d1d84d-b735-4eb7-a340-32df3a7df1ee', 'Ahmed', '+2011230871', 'ahmed@user1.user', '2025-08-12 09:16:50', NULL, 1, NULL, NULL, '2000-01-01', NULL, NULL, '2025-08-12 09:15:46', '2025-08-12 09:16:50', 'user', NULL, 5, 'pending', NULL),
+(12, '0f437458-40b4-402e-b615-73f982086a7f', 'Ahmedd', '+2011230872', 'ahmedd@user.user', '2025-08-13 11:37:57', NULL, 1, NULL, NULL, '2000-01-01', NULL, NULL, '2025-08-13 11:14:18', '2025-08-13 12:47:48', 'user', NULL, 7, 'pending', NULL),
+(13, '7743805c-a887-42f1-af0f-da719f61d5bb', 'aag', '+2011230885', 'ahmedd@user.userr', NULL, NULL, 0, NULL, NULL, '2000-01-13', NULL, NULL, '2025-08-13 11:25:08', '2025-08-13 11:25:08', 'user', '123456', 8, 'pending', NULL),
+(16, '92b0c4d2-31c2-419f-b187-4065c5f62067', 'test', '+2011230800', 'test@test.com', '2025-08-13 11:35:22', NULL, 1, NULL, NULL, '2000-01-04', NULL, NULL, '2025-08-13 11:35:10', '2025-08-13 11:35:22', 'user', NULL, 11, 'pending', NULL),
+(17, 'd0cf928e-a1b8-4735-b71c-8b3f103eabf6', 'test', '+2011230000', 'test@admin.com', '2025-08-13 11:43:02', NULL, 1, NULL, NULL, '2000-01-19', NULL, NULL, '2025-08-13 11:42:50', '2025-08-13 11:43:02', 'user', NULL, 12, 'pending', NULL),
+(18, 'cdb92eb2-5e5a-4d20-8839-1daf26ebbb0c', 'test', '+2011230001', 'test@demo.com', '2025-08-13 11:44:46', NULL, 1, NULL, NULL, '2000-01-26', NULL, NULL, '2025-08-13 11:44:36', '2025-08-13 11:49:29', 'user', NULL, 13, 'pending', NULL),
+(19, '58259ad0-a191-4bfb-a380-b8397a62acec', 'test', '+2065498112', 'testt@test.com', '2025-08-13 13:05:13', NULL, 1, NULL, NULL, '2000-01-13', NULL, NULL, '2025-08-13 13:05:03', '2025-08-13 13:05:13', 'user', NULL, 14, 'pending', NULL),
+(20, '600c11e2-6396-4c25-868a-f6a54fa974ba', 'Ahmed', '+20112308712', 'ahmed@user1.usera', '2025-08-13 13:12:44', NULL, 1, NULL, NULL, '2000-01-01', NULL, NULL, '2025-08-13 13:12:24', '2025-08-13 13:12:44', 'user', NULL, 15, 'pending', NULL),
+(21, 'c219b3cb-b59e-44dd-b16d-5161a1d93e6d', 'ayat', '+2098765412', 'ayat@test.com', '2025-08-14 06:41:21', NULL, 1, NULL, NULL, '2000-01-26', NULL, NULL, '2025-08-14 06:41:08', '2025-08-14 06:41:21', 'user', NULL, 16, 'pending', NULL),
+(27, 'e831ee5b-d116-4adf-b42f-544b022aa459', 'osama', '+201007988964', 'osamadiab097@gmail.com', '2025-08-14 10:57:48', NULL, 1, NULL, NULL, '2025-08-14', NULL, NULL, '2025-08-14 10:57:34', '2025-08-14 10:57:48', 'user', NULL, 22, 'active', 1),
+(28, '4a358367-2ba9-4819-a288-f809024d4f44', 'abas', '+201140051720', 'abas@gmail.com', NULL, NULL, 0, NULL, NULL, '2000-01-27', NULL, NULL, '2025-08-14 11:09:48', '2025-08-14 11:09:48', 'user', '123456', 23, 'pending', NULL),
+(29, 'ffc32b82-befd-49e6-b2cd-00edc84c2c12', 'ahh', '+201234567895', 'ahh@test.com', '2025-08-14 11:17:59', NULL, 1, NULL, NULL, '2000-01-27', NULL, NULL, '2025-08-14 11:17:48', '2025-08-14 12:35:22', 'user', NULL, 24, 'active', 1),
+(30, '3ab0e55b-20a7-482e-a4a4-9512b05a56a6', 'osama', '+201122345678', 'osama@test.com', '2025-08-14 11:23:10', NULL, 1, NULL, NULL, '2000-01-20', NULL, NULL, '2025-08-14 11:22:59', '2025-08-14 12:26:59', 'user', NULL, 25, 'active', 1),
+(31, '2ed36734-2d79-4ac7-a876-9b51b5476b4e', 'nada', '+201122334567', 'nada@gmail.com', '2025-08-14 11:43:05', NULL, 1, NULL, '36987452125441', '2000-01-20', NULL, NULL, '2025-08-14 11:42:55', '2025-08-14 11:43:05', 'user', NULL, 26, 'active', 1),
+(32, '9543474f-910e-42b8-bccf-be787b4f59b9', 'ahmeddd', '+201245789633', 'ahmeddd@test.com', '2025-08-14 11:44:23', NULL, 1, NULL, NULL, '2000-01-27', NULL, NULL, '2025-08-14 11:44:13', '2025-08-14 12:37:16', 'user', NULL, 27, 'active', 1),
+(33, 'cd47addd-9adf-4f02-bb72-35184e95fc85', 'ayat', '+211123456789', 'ayat@gmail.con', '2025-12-10 11:31:30', NULL, 1, NULL, NULL, '2000-01-09', NULL, NULL, '2025-12-10 11:31:06', '2025-12-10 11:31:30', 'user', NULL, 28, 'pending', NULL),
+(34, 'a99319c2-3350-4c98-bbcf-576ca7e486f5', 'Ahmed', '+20112308711', 'ahmedd@user1.usera', '2026-03-23 11:33:12', NULL, 1, NULL, NULL, '2000-01-01', NULL, NULL, '2026-03-23 11:32:14', '2026-03-23 11:33:30', 'user', '123456', 29, 'pending', NULL),
+(36, '02143f7b-6b85-4560-94c9-49aa6fb6bfb3', 'Ahmed Salem', '01159537854', 'el3amed22@gmail.com', NULL, '$2y$12$VpbJPozBtrhmisumPumup.wXn75WzEviAO1rTbHfZQ.V..k3eMHCG', 1, 'users/images/svAKm7TZySjSzPS7QNcd1MG1AFlWzQo04ozsKYYt.png', '3010902143005', NULL, NULL, NULL, '2026-05-15 17:22:14', '2026-05-15 17:22:14', 'admin', NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -1010,7 +1057,8 @@ ALTER TABLE `districts`
 ALTER TABLE `events`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `events_slug_unique` (`slug`),
-  ADD KEY `events_user_id_foreign` (`user_id`);
+  ADD KEY `events_user_id_foreign` (`user_id`),
+  ADD KEY `events_publish_status_index` (`publish_status`);
 
 --
 -- Indexes for table `event_organizers`
@@ -1033,6 +1081,13 @@ ALTER TABLE `event_sponsors`
 ALTER TABLE `event_user`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `event_user_event_id_user_id_unique` (`event_id`,`user_id`);
+
+--
+-- Indexes for table `export_logs`
+--
+ALTER TABLE `export_logs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `export_logs_user_id_foreign` (`user_id`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -1074,6 +1129,17 @@ ALTER TABLE `local_units`
   ADD KEY `local_units_name_index` (`name`),
   ADD KEY `local_units_status_index` (`status`),
   ADD KEY `local_units_sort_order_index` (`sort_order`);
+
+--
+-- Indexes for table `log_system`
+--
+ALTER TABLE `log_system`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `log_system_user_id_index` (`user_id`),
+  ADD KEY `log_system_category_index` (`category`),
+  ADD KEY `log_system_action_index` (`action`),
+  ADD KEY `log_system_status_code_index` (`status_code`),
+  ADD KEY `log_system_created_at_index` (`created_at`);
 
 --
 -- Indexes for table `members`
@@ -1188,7 +1254,8 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `users_phone_unique` (`phone`),
   ADD UNIQUE KEY `users_email_unique` (`email`),
   ADD KEY `users_member_id_foreign` (`member_id`),
-  ADD KEY `users_member_reviewed_by_foreign` (`member_reviewed_by`);
+  ADD KEY `users_member_reviewed_by_foreign` (`member_reviewed_by`),
+  ADD KEY `users_governorate_id_foreign` (`governorate_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -1255,6 +1322,12 @@ ALTER TABLE `event_user`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `export_logs`
+--
+ALTER TABLE `export_logs`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -1279,6 +1352,12 @@ ALTER TABLE `local_units`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `log_system`
+--
+ALTER TABLE `log_system`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
@@ -1288,7 +1367,7 @@ ALTER TABLE `members`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `news`
@@ -1374,10 +1453,22 @@ ALTER TABLE `event_sponsors`
   ADD CONSTRAINT `event_sponsors_event_id_foreign` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`) ON DELETE SET NULL;
 
 --
+-- Constraints for table `export_logs`
+--
+ALTER TABLE `export_logs`
+  ADD CONSTRAINT `export_logs_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL;
+
+--
 -- Constraints for table `local_units`
 --
 ALTER TABLE `local_units`
   ADD CONSTRAINT `local_units_district_id_foreign` FOREIGN KEY (`district_id`) REFERENCES `districts` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+--
+-- Constraints for table `log_system`
+--
+ALTER TABLE `log_system`
+  ADD CONSTRAINT `log_system_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL;
 
 --
 -- Constraints for table `model_has_permissions`
@@ -1414,6 +1505,7 @@ ALTER TABLE `role_has_permissions`
 -- Constraints for table `users`
 --
 ALTER TABLE `users`
+  ADD CONSTRAINT `users_governorate_id_foreign` FOREIGN KEY (`governorate_id`) REFERENCES `governorates` (`id`) ON DELETE SET NULL,
   ADD CONSTRAINT `users_member_id_foreign` FOREIGN KEY (`member_id`) REFERENCES `members` (`id`) ON DELETE SET NULL,
   ADD CONSTRAINT `users_member_reviewed_by_foreign` FOREIGN KEY (`member_reviewed_by`) REFERENCES `users` (`id`) ON DELETE SET NULL;
 COMMIT;
