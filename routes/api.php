@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\EventController;
 use App\Http\Controllers\Api\LocationController;
 use App\Http\Controllers\Api\NewsController;
 use App\Http\Controllers\Api\ParliamentaryBodyController;
+use App\Http\Controllers\Api\ResetPasswordController;
 use App\Http\Controllers\Api\SliderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,17 @@ Route::group(['middleware' => ['guest']], function () {
     Route::post('verify-phone', [AuthController::class, 'verifyPhone'])->name('auth.verifyPhone');
     Route::post('login', [AuthController::class, 'login'])->name('auth.login');
     Route::post('login-otp', [AuthController::class, 'loginOTP'])->name('auth.loginOTP');
+
+    // reset password flow
+    Route::post('/auth/reset-password/send-code', [ResetPasswordController::class, 'resetPasswordSendCode'])
+        ->middleware('throttle:5,1')
+        ->name('api.reset-password.send-code');
+    Route::post('/auth/reset-password/verify-code', [ResetPasswordController::class, 'resetPasswordVerifyCode'])
+        ->middleware('throttle:10,1')
+        ->name('api.reset-password.verify-code');
+    Route::post('/auth/reset-password/set-new-password', [ResetPasswordController::class, 'resetPasswordSetNewPassword'])
+        ->middleware('throttle:5,1')
+        ->name('api.reset-password.set-new-password');
 });
 
 Route::post('complaints', [ComplaintController::class, 'store'])
@@ -38,24 +50,24 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/update-profile', [AuthController::class, 'updateProfile'])->name('profile.update');
     Route::post('logout', [AuthController::class, 'logout'])->name('auth.logout');
 
-    Route::get('events',[EventController::class,'index'])->name('events.index');
-    Route::get('events/drafts',[EventController::class,'drafts'])->name('events.drafts');
-    Route::get('events/{id}',[EventController::class,'show'])->name('events.show');
+    Route::get('events', [EventController::class, 'index'])->name('events.index');
+    Route::get('events/drafts', [EventController::class, 'drafts'])->name('events.drafts');
+    Route::get('events/{id}', [EventController::class, 'show'])->name('events.show');
 
-    Route::get('news',[NewsController::class,'index'])->name('news.index');
-    Route::get('news/{id}',[NewsController::class,'show'])->name('news.show');
+    Route::get('news', [NewsController::class, 'index'])->name('news.index');
+    Route::get('news/{id}', [NewsController::class, 'show'])->name('news.show');
 
-    Route::get('candidates',[CandidateController::class,'index'])->name('candidates.index');
-    Route::get('candidates/{id}',[CandidateController::class,'show'])->name('candidates.show');
+    Route::get('candidates', [CandidateController::class, 'index'])->name('candidates.index');
+    Route::get('candidates/{id}', [CandidateController::class, 'show'])->name('candidates.show');
 
-    Route::get('branches',[BranchController::class,'index'])->name('branches.index');
-    Route::get('parliamentary-bodies',[ParliamentaryBodyController::class,'index'])->name('parliamentary-bodies.index');
+    Route::get('branches', [BranchController::class, 'index'])->name('branches.index');
+    Route::get('parliamentary-bodies', [ParliamentaryBodyController::class, 'index'])->name('parliamentary-bodies.index');
 
-    Route::get('sliders',[SliderController::class,'index'])->name('sliders.index');
+    Route::get('sliders', [SliderController::class, 'index'])->name('sliders.index');
 
-    Route::get('app-settings',[AppSettingController::class,'index'])->name('app-settings.index');
-    Route::get('about-us/vision',[AboutUsController::class,'vision'])->name('about-us.vision');
-    Route::get('about-us/faqs',[AboutUsController::class,'faqs'])->name('about-us.faqs');
-    Route::get('about-us/contact-mail',[AboutUsController::class,'contactMail'])->name('about-us.contact-mail');
-    Route::get('about-us/membership-form-url',[AboutUsController::class,'membershipFormUrl'])->name('about-us.membership-form-url');
+    Route::get('app-settings', [AppSettingController::class, 'index'])->name('app-settings.index');
+    Route::get('about-us/vision', [AboutUsController::class, 'vision'])->name('about-us.vision');
+    Route::get('about-us/faqs', [AboutUsController::class, 'faqs'])->name('about-us.faqs');
+    Route::get('about-us/contact-mail', [AboutUsController::class, 'contactMail'])->name('about-us.contact-mail');
+    Route::get('about-us/membership-form-url', [AboutUsController::class, 'membershipFormUrl'])->name('about-us.membership-form-url');
 });
