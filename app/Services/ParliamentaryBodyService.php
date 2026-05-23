@@ -52,4 +52,11 @@ class ParliamentaryBodyService
     {
         return $this->repo->delete($item);
     }
+
+    public function index()
+    {
+        $limit = request()->input('limit', 15);
+
+        return $this->repo->index($limit);
+    }
 }

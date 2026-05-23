@@ -31,4 +31,9 @@ class ParliamentaryBodyRepository
     {
         return $item->delete();
     }
+
+    public function index($limit)
+    {
+        return ParliamentaryBody::where('status', '1')->latest()->paginate($limit);
+    }
 }
