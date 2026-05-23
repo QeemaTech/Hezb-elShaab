@@ -4,10 +4,12 @@ use App\Http\Controllers\Api\AppSettingController;
 use App\Http\Controllers\Api\AboutUsController;
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\CandidateController;
+use App\Http\Controllers\Api\BranchController;
 use App\Http\Controllers\Api\ComplaintController;
 use App\Http\Controllers\Api\EventController;
 use App\Http\Controllers\Api\LocationController;
 use App\Http\Controllers\Api\NewsController;
+use App\Http\Controllers\Api\ParliamentaryBodyController;
 use App\Http\Controllers\Api\SliderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -45,6 +47,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::get('candidates',[CandidateController::class,'index'])->name('candidates.index');
     Route::get('candidates/{id}',[CandidateController::class,'show'])->name('candidates.show');
+
+    Route::get('branches',[BranchController::class,'index'])->name('branches.index');
+    Route::get('parliamentary-bodies',[ParliamentaryBodyController::class,'index'])->name('parliamentary-bodies.index');
 
     Route::get('sliders',[SliderController::class,'index'])->name('sliders.index');
 

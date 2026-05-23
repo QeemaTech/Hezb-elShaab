@@ -99,7 +99,18 @@ class User extends Authenticatable
 
     public function getIsActiveMemberAttribute()
     {
-        return $this->member_id !== null && $this->member_status === 'active';
+        if ($this->member_id === null || $this->member_status !== 'active' || empty($this->national_id)) {
+            return false;
+        }
+
+        if ($this->relationLoaded('member')) {
+            return $this->member !== null && $this->member->national_id === $this->national_id;
+        }
+
+        return Member::query()
+            ->whereKey($this->member_id)
+            ->where('national_id', $this->national_id)
+            ->exists();
     }
 
 }
